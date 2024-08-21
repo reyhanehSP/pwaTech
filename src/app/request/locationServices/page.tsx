@@ -1,4 +1,4 @@
-import Services from "@/components/services";
+import Services from "@/components/request/locationServices";
 const ServicesPage = () => {
     return <Services />   
 }

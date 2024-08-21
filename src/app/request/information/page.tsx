@@ -1,4 +1,4 @@
-import InformationExpert from "@/components/informationExpert";
+import InformationExpert from "@/components/request/informationExpert";
 const InformationExpertPage = () => {
     return <InformationExpert />  
 }

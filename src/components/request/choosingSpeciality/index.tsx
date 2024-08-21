@@ -12,10 +12,17 @@ import InputBase from "@mui/material/InputBase";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
-import useChoosingSpeciality from "@/components/choosingSpeciality/_hooks/useChoosingSpeciality";
+import useChoosingSpeciality from "@/components/request/choosingSpeciality/_hooks/useChoosingSpeciality";
 
 const ChoosingSpeciality = () => {
-  const { handleSubmit, query, setQuery } = useChoosingSpeciality();
+  const {
+    handleSubmit,
+    query,
+    setQuery,
+    specialities,
+    selectedSpeciality,
+    handleAddSpeciality,
+  } = useChoosingSpeciality();
 
   return (
     <Container maxWidth="lg" className="h-full">
@@ -37,12 +44,22 @@ const ChoosingSpeciality = () => {
           <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
           <div dir="rtl">
             <div>مرتبط ترین تخصص شما</div>
-            {query}
-            <FormControlLabel
-              control={<Checkbox defaultChecked />}
-              label="تعمیر یخچال"
-            />
-            <FormControlLabel control={<Checkbox />} label="نصب یخچال" />
+            {specialities.map((item) => (
+              
+                <FormControlLabel
+                  key={item.ID}
+                  control={
+                    <Checkbox
+                      value={selectedSpeciality}
+                      onChange={(e) =>
+                        handleAddSpeciality(e.target.checked , item)
+                      }
+                    />
+                  }
+                  label={item.skillDesc}
+                />
+              
+            ))}
           </div>
           <Button type="submit" variant="contained">
             مرحله بعد
