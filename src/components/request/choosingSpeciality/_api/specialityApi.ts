@@ -1,6 +1,5 @@
 import axios from "axios";
 export const getSkills = async (desc: string) => {
-  console.log(desc.length);
  
     const response = await axios.post(
       "http://185.88.177.194:8082/api/TechPwa/getskill",
@@ -14,6 +13,7 @@ export const getSkills = async (desc: string) => {
           "Content-Type": "application/json",
         },
       }
-    );
+   );
+
   return response.data;
 };

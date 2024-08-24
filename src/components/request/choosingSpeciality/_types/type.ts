@@ -1,6 +1,6 @@
 import { ReactElement, ReactNode } from 'react';
 
-export type SpecialtiesType = {
+export interface SpecialtiesType  {
     ID : number,
     skillDesc : string
 }[]

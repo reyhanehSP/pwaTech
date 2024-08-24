@@ -11,10 +11,15 @@ const useChoosingSpeciality = () => {
     (state) => state.registerInformation
   );
 
+  // const initialState: SpecialtiesType = {
+  //   ID: 1,
+  //   skillDesc: "نصب یخچال",
+  // };
   const [query, setQuery] = useState("");
-  const [specialities, setSpecialities] = useState<SpecialtiesType>({});
+  const [specialities, setSpecialities] = useState<SpecialtiesType>([]);
   const [selectedSpeciality, setSelectedSpeciality] = useState(false);
-  const [information, setInformation] = useState<SpecialtiesType>({});
+  const [selectedID, setSelectedID] = useState();
+  const [information, setInformation] = useState<SpecialtiesType>([]);
   const router = useRouter();
 
   useEffect(
@@ -23,7 +28,6 @@ const useChoosingSpeciality = () => {
         ? getSkills(query)
             .then((res) => {
               setSpecialities(res.payload);
-              console.log(specialities);
             })
             .catch((error) => console.log(error))
         : " ";
@@ -31,24 +35,30 @@ const useChoosingSpeciality = () => {
     [query]
   );
 
-  const handleAddSpeciality = (checkedValue: boolean, item: object) => {
-    const { ID: id, skillDesc: skilldesc } = item;
+  function handleAddSpeciality(checkedValue: boolean, item: SpecialtiesType) {
+    const { ID: ID, skillDesc: skillDesc } = item;
     const newSpeciality = {
-      id,
-      skilldesc,
+      ID,
+      skillDesc,
     };
-    console.log(id, skilldesc);
-    setSelectedSpeciality(checkedValue);
-    console.log("information", information);
- 
+    console.log("newSpeciality", newSpeciality);
+
     if (checkedValue) {
-      setInformation((information) => [...information, newSpeciality]);
+      setInformation((prevObjects) => {
+        const exists = prevObjects.some((obj) => obj.ID === newSpeciality.ID);
+        if (!exists) {
+          return [...prevObjects, newSpeciality]; // Add new object
+        }
+        return prevObjects; // Return previous state if ID exists
+      });
+    } else {
+      setInformation((information) =>
+        information.filter((information) => information.ID !== item.ID)
+      );
     }
-       const istrue = information
-         .map((information) => information.ID)
-         .includes(item.ID);
-       console.log("isTrue", istrue);
-  };
+    console.log("information" , information)
+  }
+  console.log("info", information);
   const handleSubmit = (e: any) => {
     e.preventDefault();
     registerInformation(information);
@@ -59,10 +69,10 @@ const useChoosingSpeciality = () => {
     specialities,
     selectedSpeciality,
     setSelectedSpeciality,
+    handleAddSpeciality,
     handleSubmit,
     query,
     setQuery,
-    handleAddSpeciality,
   };
 };
 

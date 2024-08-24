@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import React from "react";
 import Paper from "@mui/material/Paper";
-import InputBase from "@mui/material/InputBase";
+
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
@@ -44,21 +44,20 @@ const ChoosingSpeciality = () => {
           <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
           <div dir="rtl">
             <div>مرتبط ترین تخصص شما</div>
-            {specialities.map((item) => (
-              
-                <FormControlLabel
-                  key={item.ID}
-                  control={
-                    <Checkbox
-                      value={selectedSpeciality}
-                      onChange={(e) =>
-                        handleAddSpeciality(e.target.checked , item)
-                      }
-                    />
-                  }
-                  label={item.skillDesc}
-                />
-              
+            
+            {specialities && specialities.map((item : any) => (
+              <FormControlLabel
+                key={item.ID}
+                control={
+                  <Checkbox
+                    value={selectedSpeciality}
+                    onChange={(e) =>
+                      handleAddSpeciality(e.target.checked, item)
+                    }
+                  />
+                }
+                label={item.skillDesc}
+              />
             ))}
           </div>
           <Button type="submit" variant="contained">
