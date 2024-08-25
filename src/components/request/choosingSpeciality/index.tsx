@@ -14,29 +14,29 @@ import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
 import useChoosingSpeciality from "@/components/request/choosingSpeciality/_hooks/useChoosingSpeciality";
 
-const ChoosingSpeciality = () => {
+const ChoosingSpeciality = ({nextLevel} : {nextLevel : any}) => {
   const {
-    handleSubmit,
     query,
-    setQuery,
     specialities,
-    selectedSpeciality,
-    handleAddSpeciality,
+    selectedSpecialities,
+   dispatch
   } = useChoosingSpeciality();
-
+  console.log(selectedSpecialities);
   return (
     <Container maxWidth="lg" className="h-full">
       <div className="main-layout">
         <p>انتخاب تخصص</p>
         <p>در چه زمینه ای ارائه خدمات می‌دهید؟</p>
 
-        <Paper onSubmit={handleSubmit} component="form">
+        <Paper component="form">
           <TextField
             label="Size"
             id="outlined-size-small"
             size="small"
             value={query}
-            onChange={(e) => setQuery(e.target.value)}
+            onChange={(e) =>
+              dispatch({ type: "changeQuery", payload: e.target.value })
+            }
           />
           <IconButton type="button" sx={{ p: "10px" }} aria-label="search">
             <SearchIcon />
@@ -44,23 +44,31 @@ const ChoosingSpeciality = () => {
           <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
           <div dir="rtl">
             <div>مرتبط ترین تخصص شما</div>
-            
-            {specialities && specialities.map((item : any) => (
-              <FormControlLabel
-                key={item.ID}
-                control={
-                  <Checkbox
-                    value={selectedSpeciality}
-                    onChange={(e) =>
-                      handleAddSpeciality(e.target.checked, item)
-                    }
-                  />
-                }
-                label={item.skillDesc}
-              />
-            ))}
+
+            {specialities &&
+              specialities.map((item: any) => (
+                <FormControlLabel
+                  key={item.ID}
+                  control={
+                    <Checkbox
+                      value={item.skillDesc}
+                      onChange={(e) =>
+                        dispatch({
+                          type: "updateSkill",
+                          payload: [e.target.checked, item],
+                        })
+                      }
+                    />
+                  }
+                  label={item.skillDesc}
+                />
+              ))}
           </div>
-          <Button type="submit" variant="contained">
+          <Button
+            type="submit"
+            variant="contained"
+            onClick={() => nextLevel({ type: "InformationExpert" , payload : selectedSpecialities })}
+          >
             مرحله بعد
           </Button>
         </Paper>

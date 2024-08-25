@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 import useLocation from "@/components/request/locationServices/_hooks/useLocation";
 
-const Services = () => {
+const LocationServices = () => {
   const {
     handleSubmit,
     province,
@@ -20,6 +20,7 @@ const Services = () => {
     city,
     setCity,
     selectedID,
+    dispatch
   } = useLocation();
   return (
     <Container maxWidth="lg" className="h-full">
@@ -55,7 +56,7 @@ const Services = () => {
               <MenuItem value={3}>اشتهارد</MenuItem>
             </Select>
           </FormControl>
-          <Button variant="contained" onClick={handleSubmit}>
+          <Button variant="contained" onClick={ () => dispatch ({type : "finnalLevel"})}>
             مرحله بعد
           </Button>
         </FormGroup>
@@ -63,4 +64,4 @@ const Services = () => {
     </Container>
   );
 };
-export default Services;
+export default LocationServices;

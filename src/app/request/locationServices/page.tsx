@@ -1,5 +1,5 @@
-import Services from "@/components/request/locationServices";
+import LocationServices from "@/components/request/locationServices";
 const ServicesPage = () => {
-    return <Services />   
+    return <LocationServices />;   
 }
 export default ServicesPage

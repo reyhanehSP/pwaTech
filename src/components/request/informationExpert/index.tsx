@@ -16,7 +16,7 @@ import { useRouter } from "next/navigation";
 import useInformation from "@/components/request/informationExpert/_hooks/useInformation";
 
 
-const InformationExpert = () => {
+const InformationExpert = ({dispatch} : {dispatch : any}) => {
   const {
     information,
     handleFirstNameChange,
@@ -95,7 +95,7 @@ const InformationExpert = () => {
               </RadioGroup>
             </div>
           </div>
-          <Button variant="contained" onClick={handleSubmit}>
+          <Button variant="contained" onClick={() => dispatch({type : 'locationServices'})}>
             مرحله بعد
           </Button>
         </Paper>

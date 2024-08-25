@@ -1,33 +1,58 @@
-import axios from "axios";
-import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
-// import { SubmitHandler, useForm } from "react-hook-form";
+import { useEffect, useReducer } from "react";
 import { getSkills } from "@/components/request/choosingSpeciality/_api/specialityApi";
-import { SpecialtiesType } from "@/components/request/choosingSpeciality/_types/type";
-import useInformation from "@/components/request/_store/_store";
 
 const useChoosingSpeciality = () => {
-  const registerInformation = useInformation(
-    (state) => state.registerInformation
-  );
+  const initialState = {
+    specialities: [],
+    selectedSpecialities: [],
+    query: "",
+  };
+  function reducer(state: any, action: any) {
+    switch (action.type) {
+      case "changeQuery":
+        return { ...state, query: action.payload };
+      case "ready":
+        return { ...state, specialities: action.payload };
+      case "updateSkill":
+        if (action.payload[0]) {
+          const exists = state.selectedSpecialities.some(
+            (obj: any) => obj.ID === action.payload[1].ID
+          );
+          if (!exists) {
+            return {
+              ...state,
+              selectedSpecialities: [
+                ...state.selectedSpecialities,
+                action.payload[1],
+              ],
+            };
+          } else {
+            return { ...state };
+          } 
+        } else {
+          return {
+            ...state,
+            selectedSpecialities: state.selectedSpecialities.filter(
+              (skill : any) => skill.ID !== action.payload[1].ID
+            ),
+          };
+        }
 
-  // const initialState: SpecialtiesType = {
-  //   ID: 1,
-  //   skillDesc: "نصب یخچال",
-  // };
-  const [query, setQuery] = useState("");
-  const [specialities, setSpecialities] = useState<SpecialtiesType>([]);
-  const [selectedSpeciality, setSelectedSpeciality] = useState(false);
-  const [selectedID, setSelectedID] = useState();
-  const [information, setInformation] = useState<SpecialtiesType>([]);
-  const router = useRouter();
+      default:
+        throw new Error("Unknown action");
+    }
+  }
+  const [{ specialities, selectedSpecialities, query }, dispatch] = useReducer(
+    reducer,
+    initialState
+  );
 
   useEffect(
     function () {
       query.length > 2
         ? getSkills(query)
-            .then((res) => {
-              setSpecialities(res.payload);
+            .then((res: any) => {
+              dispatch({ type: "ready", payload: res.payload });
             })
             .catch((error) => console.log(error))
         : " ";
@@ -35,44 +60,11 @@ const useChoosingSpeciality = () => {
     [query]
   );
 
-  function handleAddSpeciality(checkedValue: boolean, item: SpecialtiesType) {
-    const { ID: ID, skillDesc: skillDesc } = item;
-    const newSpeciality = {
-      ID,
-      skillDesc,
-    };
-    console.log("newSpeciality", newSpeciality);
-
-    if (checkedValue) {
-      setInformation((prevObjects) => {
-        const exists = prevObjects.some((obj) => obj.ID === newSpeciality.ID);
-        if (!exists) {
-          return [...prevObjects, newSpeciality]; // Add new object
-        }
-        return prevObjects; // Return previous state if ID exists
-      });
-    } else {
-      setInformation((information) =>
-        information.filter((information) => information.ID !== item.ID)
-      );
-    }
-    console.log("information" , information)
-  }
-  console.log("info", information);
-  const handleSubmit = (e: any) => {
-    e.preventDefault();
-    registerInformation(information);
-    router.push(" /request/information");
-  };
-
   return {
     specialities,
-    selectedSpeciality,
-    setSelectedSpeciality,
-    handleAddSpeciality,
-    handleSubmit,
+    selectedSpecialities,
     query,
-    setQuery,
+    dispatch,
   };
 };
 
