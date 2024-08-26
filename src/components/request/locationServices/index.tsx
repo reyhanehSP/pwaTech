@@ -50,14 +50,17 @@ const LocationServices: React.FC<PropType> = ({
           <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
             <InputLabel id="demo-select-small-label">شهر</InputLabel>
             <Select
-              onChange={(e) => setCity(e.target.value)}
+              onChange={(e) => setCity(Number(e.target.value))}
               value={city}
               labelId="demo-select-small-label"
               id="demo-select-small"
               label="Age"
             >
-              <MenuItem value={2}>طالقان</MenuItem>
-              <MenuItem value={3}>اشتهارد</MenuItem>
+              {city.map((item: any) => (
+                <MenuItem key={item.ID} value={item.ID}>
+                  {item}
+                </MenuItem>
+              ))}
             </Select>
           </FormControl>
           <div className={style.footer}>
