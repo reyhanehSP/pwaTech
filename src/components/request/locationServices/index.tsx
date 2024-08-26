@@ -11,16 +11,20 @@ import {
  
 } from "@mui/material";
 import useLocation from "@/components/request/locationServices/_hooks/useLocation";
-
-const LocationServices = () => {
+import style from "@/components/request/locationServices/_styles/styles.module.scss";
+import AppImage from "@/components/common/AppImage";
+import { PropType } from "@/components/request/locationServices/_types/type";
+const LocationServices: React.FC<PropType> = ({
+  nextLevel,
+  activeCurState
+}) => {
   const {
-    handleSubmit,
     province,
+    handleSubmit,
     handleChangeProvince,
     city,
     setCity,
     selectedID,
-    dispatch
   } = useLocation();
   return (
     <Container maxWidth="lg" className="h-full">
@@ -36,7 +40,7 @@ const LocationServices = () => {
               id="demo-select-small"
               label="Age"
             >
-              {province.map((item) => (
+              {province.map((item: any) => (
                 <MenuItem key={item.ID} value={item.ID}>
                   {item.ProvinceDesc}
                 </MenuItem>
@@ -56,9 +60,29 @@ const LocationServices = () => {
               <MenuItem value={3}>اشتهارد</MenuItem>
             </Select>
           </FormControl>
-          <Button variant="contained" onClick={ () => dispatch ({type : "finnalLevel"})}>
-            مرحله بعد
-          </Button>
+          <div className={style.footer}>
+            <button
+              className={style.nextButton}
+              type="submit"
+              onClick={handleSubmit}
+            >
+              مرحله بعد
+            </button>
+            <button
+              onClick={() => nextLevel({ type: "InformationExpert" })}
+              className={
+                activeCurState === 3
+                  ? style.disabledBackButton
+                  : style.backButton
+              }
+            >
+              <AppImage
+                src={"/assets/icons/arrowLeft/icon.svg"}
+                width={15}
+                height={15}
+              />
+            </button>
+          </div>
         </FormGroup>
       </div>
     </Container>

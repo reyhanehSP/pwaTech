@@ -1,0 +1,20 @@
+.button, .disabledButton {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 0.5rem;
+    font-size: 1rem;
+    background-image: linear-gradient(to top, #7569F4, #9187F6);
+    padding: 10px;
+    color: #FFFFFF;
+    font-weight: 700;
+    border-radius: 1rem;
+}
+
+.disabledButton {
+    background-color: #F1F0FE !important;
+    background-image: none;
+    border: 1px solid #E4E7EC;
+    color: #98A2B3;
+}

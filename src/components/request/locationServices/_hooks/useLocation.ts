@@ -1,19 +1,28 @@
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useReducer, useState } from "react";
 import {GetProvince , GetCity} from "@/components/request/locationServices/_api/locationApi"
-import {LocationTypes} from "@/components/request/locationServices/_types/type"
+// import {LocationTypes} from "@/components/request/locationServices/_types/type"
 const useLocation = () => {
-const [province, setProvince] = useState<LocationTypes>([]);
-const [provinceName , setProvinceName] = useState("")
+
 const [selectedID , setSelectedID] = useState(0)
 const [city , setCity] = useState("");
+const router = useRouter()
+const initialState = {
+  province : []
+};
 
+function reducer (state : any , action : any) {
+  switch (action.type) {
+    case "updateProvince" : 
+    return {...state , province : action.payload}
+  }
+}
+const [{province} , dispatch] = useReducer (reducer , initialState)
     useEffect(
       function () {
         GetProvince()
           .then((res) => {
-            setProvince(res.payload);
-            console.log("province", province);
+            dispatch({ type: "updateProvince", payload: res.payload });
           })
           .catch((error) => console.log(error));
       },[]
@@ -39,20 +48,19 @@ const [city , setCity] = useState("");
           .catch((error) => console.log(error));
         
     };
-    const router = useRouter();
-    const handleSubmit = () => {
-      router.push("/register");
-    };
+   
+ const handleSubmit = () => {
 
+   router.push('/users/entry');
+ };
     return {
-      handleSubmit,
+handleSubmit,
       province,
-      setProvince,
       city,
       setCity,
-      provinceName,
       selectedID,
       handleChangeProvince,
+      dispatch
     };
 }
 export default useLocation;

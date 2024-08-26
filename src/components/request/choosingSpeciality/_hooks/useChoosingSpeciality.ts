@@ -42,10 +42,10 @@ const useChoosingSpeciality = () => {
         throw new Error("Unknown action");
     }
   }
-  const [{ specialities, selectedSpecialities, query }, dispatch] = useReducer(
-    reducer,
-    initialState
-  );
+  const [
+    { specialities, selectedSpecialities, query, activeCurrStepIndex },
+    dispatch,
+  ] = useReducer(reducer, initialState);
 
   useEffect(
     function () {
@@ -64,6 +64,7 @@ const useChoosingSpeciality = () => {
     specialities,
     selectedSpecialities,
     query,
+    activeCurrStepIndex,
     dispatch,
   };
 };

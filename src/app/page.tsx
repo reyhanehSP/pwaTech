@@ -1,9 +1,8 @@
 "use client";
-import Home from "@/components/home";
-import React from "react";
+import Intro from "@/components/users/intro";
 
-const HomePage = () => {
+const IntroPage = () => {
 
-  return <Home />
+  return <Intro />
 };
-export default HomePage;
+export default IntroPage;

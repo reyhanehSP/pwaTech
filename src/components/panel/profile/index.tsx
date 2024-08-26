@@ -149,22 +149,7 @@ const Profile = () => {
             <p>عکس از قبل و بعد از انجام کار</p>
             <p>عکس از خودتون و تیمتون در حین انجام کار</p>
             <p>عکس از لوازم و تجهیزات</p>
-            <ImageList
-              sx={{ width: 500, height: 450 }}
-              cols={3}
-              rowHeight={164}
-            >
-              {itemData.map((item) => (
-                <ImageListItem key={item.img}>
-                  <img
-                    srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
-                    src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
-                    alt={item.title}
-                    loading="lazy"
-                  />
-                </ImageListItem>
-              ))}
-            </ImageList>
+           
           </TabPanel>
           <TabPanel value={2}>
             <FormGroup>
