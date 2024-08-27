@@ -1,42 +1,52 @@
 "use client";
-import { Button, Checkbox, FormControlLabel, TextField } from "@mui/material";
+import {
+  Button,
+  Checkbox,
+  FormControlLabel,
+  MenuItem,
+  TextField,
+} from "@mui/material";
 import React from "react";
-import style from "@/components/request/choosingSpeciality/_styles/styles.module.scss";
-import Divider from "@mui/material/Divider";
+import style from "@/components/request/choosingSpeciality/_styles/ChoosingSpeciality.module.scss";
+
 import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
 import useChoosingSpeciality from "@/components/request/choosingSpeciality/_hooks/useChoosingSpeciality";
-import {PropType} from "@/components/request/choosingSpeciality/_types/type"
-
-const ChoosingSpeciality: React.FC<PropType> = ({nextLevel, activeCurState}) => {
-
-  const { query, specialities, selectedSpecialities, dispatch } =
-    useChoosingSpeciality();
+import { PropType } from "@/components/request/choosingSpeciality/_types/type";
+import Loading from "@/components/common/Loading";
+const ChoosingSpeciality: React.FC<PropType> = ({ nextLevel }) => {
+  const {
+    query,
+    specialities,
+    selectedSpecialities,
+    isLoading,
+    dispatch,
+    valueHolder,
+  } = useChoosingSpeciality();
   return (
     <div className={style.content}>
-      <div className="paper">
-        <div className="paper-title">
-          <p className="title">انتخاب تخصص</p>
-          <p className="sub-title">در چه زمینه ای ارائه خدمات می‌دهید؟</p>
-        </div>
+      <div className={style.paperTitle}>
+        <h1>انتخاب تخصص</h1>
+        <h2>در چه زمینه ای ارائه خدمات می‌دهید؟</h2>
+      </div>
 
-        <TextField
-          label="Size"
-          id="outlined-size-small"
-          size="small"
-          value={query}
-          onChange={(e) =>
-            dispatch({ type: "changeQuery", payload: e.target.value })
-          }
-        />
-        <IconButton type="button" sx={{ p: "10px" }} aria-label="search">
-          <SearchIcon />
-        </IconButton>
-        <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
-        <div dir="rtl">
-          <div>مرتبط ترین تخصص شما</div>
-
-          {specialities &&
+      <TextField
+        label="لیست تخصص ها"
+        id="speciality"
+        size="small"
+        className={style.inputSearch}
+        value={query}
+        placeholder={valueHolder}
+        onChange={(e) =>
+          dispatch({ type: "changeQuery", payload: e.target.value })
+        }
+      />
+     
+      <div dir="rtl">
+        <div className={style.list}>
+          {isLoading === 1 ? <Loading /> : ""}
+          {!isLoading &&
+            specialities &&
             specialities.map((item: any) => (
               <FormControlLabel
                 key={item.ID}
@@ -55,20 +65,20 @@ const ChoosingSpeciality: React.FC<PropType> = ({nextLevel, activeCurState}) => 
               />
             ))}
         </div>
-        <div className={style.footer}>
-          <button
-            className={style.nextButton}
-            type="submit"
-            onClick={() =>
-              nextLevel({
-                type: "InformationExpert",
-                payload: selectedSpecialities,
-              })
-            }
-          >
-            مرحله بعد
-          </button>
-        </div>
+      </div>
+      <div className={style.footer}>
+        <button
+          className={style.nextButton}
+          type="submit"
+          onClick={() =>
+            nextLevel({
+              type: "InformationExpert",
+              payload: selectedSpecialities,
+            })
+          }
+        >
+          مرحله بعد
+        </button>
       </div>
     </div>
   );

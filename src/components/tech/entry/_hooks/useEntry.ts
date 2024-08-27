@@ -1,8 +1,8 @@
 import {useRouter} from "next/navigation";
 import {useEffect, useState} from "react";
-import {sendSMS, verifySMS} from "@/components/users/entry/_api/loginApi";
+import {sendSMS, verifySMS} from "@/components/tech/entry/_api/loginApi";
 import {toast} from "react-toastify";
-import style from "@/components/users/entry/entry.module.scss";
+import style from "@/components/tech/entry/entry.module.scss";
 
 const useEntry = () => {
     const router = useRouter()
@@ -69,7 +69,7 @@ const useEntry = () => {
     const handleVerifyCode = () => {
         verifySMS(phoneNumber, otp).then(res => {
             if (res.statusCode === 0) {
-                router.push('/wellcome')
+                router.push('/welcome')
             } else {
                 toast.error(res.message)
                 setStatusOtp('red')

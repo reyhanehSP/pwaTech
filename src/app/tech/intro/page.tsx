@@ -1,4 +1,4 @@
-import Intro from "@/components/users/intro";
+import Intro from "@/components/tech/intro";
 
 const IntroPage = () => {
 

@@ -1,7 +1,7 @@
 "use client";
 
 import {
-  Container,
+
   FormControl,
   FormControlLabel,
   FormLabel,
@@ -10,7 +10,7 @@ import {
   TextField,
 } from "@mui/material";
 
-import style from '@/components/request/informationExpert/_styles/styles.module.scss'
+import style from "@/components/request/informationExpert/_styles/InformationExpert.module.scss";
 import useInformation from "@/components/request/informationExpert/_hooks/useInformation";
 import AppImage from "@/components/common/AppImage";
 import {PropType} from "@/components/request/informationExpert/_type/type"
@@ -19,12 +19,16 @@ const InformationExpert: React.FC<PropType>  = ({nextLevel, activeCurState}) => 
   const { information, dispatch } = useInformation();
 
   return (
-    <Container maxWidth="lg" className="h-full">
-      <div className="main-layout">
-        <span>اطلاعات کارشناس</span>
+    <div className={style.content}>
+      <div className={style.paperTitle}>
+        <h1>اطلاعات کارشناس</h1>
+      </div>
 
-        <div className="flex flex-col gap-5">
+      <div className={style.wrapper}>
+        <FormControl>
+          <FormLabel className={style.formLabel}>اطلاعات شخصی</FormLabel>
           <TextField
+            className={style.inputText}
             value={information.firstName}
             onChange={(e) =>
               dispatch({
@@ -37,6 +41,7 @@ const InformationExpert: React.FC<PropType>  = ({nextLevel, activeCurState}) => 
             size="small"
           />
           <TextField
+            className={style.inputText}
             value={information.lastName}
             onChange={(e) =>
               dispatch({
@@ -46,10 +51,10 @@ const InformationExpert: React.FC<PropType>  = ({nextLevel, activeCurState}) => 
             }
             label="نام خانوادگی"
             id="outlined-size-small"
-            defaultValue="نام خانوادگی"
             size="small"
           />
           <TextField
+            className={style.inputText}
             value={information.nationalCode}
             onChange={(e) =>
               dispatch({
@@ -59,32 +64,41 @@ const InformationExpert: React.FC<PropType>  = ({nextLevel, activeCurState}) => 
             }
             label="کدملی"
             id="outlined-size-small"
-            defaultValue="کدملی"
             size="small"
           />
-        </div>
-        <div className="my-2">
-          <FormControl>
-            <FormLabel id="demo-radio-buttons-group-label">جنسیت</FormLabel>
-            <RadioGroup
-              value={information.gender}
-              onChange={(e) =>
-                dispatch({
-                  type: "handleGenderChange",
-                  payload: e.target.value,
-                })
-              }
-              aria-labelledby="demo-radio-buttons-group-label"
-              defaultValue="female"
-              name="radio-buttons-group"
-            >
-              <FormControlLabel control={<Radio />} label="خانم" value={0} />
-              <FormControlLabel control={<Radio />} label="آقا" value={1} />
-            </RadioGroup>
-          </FormControl>
-        </div>
-        <div>
-          <p>نوع فعالیتتون را انتخاب کنید</p>
+        </FormControl>
+
+        <FormControl>
+          <FormLabel
+            id="demo-radio-buttons-group-label"
+            className={style.formLabel}
+          >
+            جنسیت
+          </FormLabel>
+          <RadioGroup
+            value={information.gender}
+            onChange={(e) =>
+              dispatch({
+                type: "handleGenderChange",
+                payload: e.target.value,
+              })
+            }
+            aria-labelledby="demo-radio-buttons-group-label"
+            defaultValue="female"
+            name="radio-buttons-group"
+          >
+            <FormControlLabel control={<Radio />} label="خانم" value={0} />
+            <FormControlLabel control={<Radio />} label="آقا" value={1} />
+          </RadioGroup>
+        </FormControl>
+
+        <FormControl>
+          <FormLabel
+            id="demo-radio-buttons-group-label"
+            className={style.formLabel}
+          >
+            نوع فعالیت خود را انتخاب کنید
+          </FormLabel>
           <div className="flex">
             <RadioGroup
               value={information.gender}
@@ -110,7 +124,8 @@ const InformationExpert: React.FC<PropType>  = ({nextLevel, activeCurState}) => 
               />
             </RadioGroup>
           </div>
-        </div>
+        </FormControl>
+        
         <div className={style.footer}>
           <button
             className={style.nextButton}
@@ -138,7 +153,7 @@ const InformationExpert: React.FC<PropType>  = ({nextLevel, activeCurState}) => 
           </button>
         </div>
       </div>
-    </Container>
+    </div>
   );
 };
 export default InformationExpert;

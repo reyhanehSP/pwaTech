@@ -40,7 +40,7 @@ const useLocation = () => {
   };
 
   const handleSubmit = () => {
-    router.push("/users/entry");
+    router.push("/tech/entry");
   };
   return {
     handleSubmit,

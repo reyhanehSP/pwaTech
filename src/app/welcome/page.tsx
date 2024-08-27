@@ -1,4 +1,4 @@
-import Wellcome from "@/components/wellcome";
+import Wellcome from "@/components/welcome";
 
 const WellcomePage = () => {
   return <Wellcome />;

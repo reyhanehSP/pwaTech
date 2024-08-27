@@ -6,11 +6,14 @@ const useChoosingSpeciality = () => {
     specialities: [],
     selectedSpecialities: [],
     query: "",
+    isLoading: 0,
+    valueHolder :""
   };
   function reducer(state: any, action: any) {
     switch (action.type) {
       case "changeQuery":
-        return { ...state, query: action.payload };
+        if (state.query.length < 3) return {...state , query: action.payload, valueHolder : 'حداقل سه حرف باید وارد کنید'}
+        return { ...state, query: action.payload , isLoading : 1 };
       case "ready":
         return { ...state, specialities: action.payload };
       case "updateSkill":
@@ -28,35 +31,49 @@ const useChoosingSpeciality = () => {
             };
           } else {
             return { ...state };
-          } 
+          }
         } else {
           return {
             ...state,
             selectedSpecialities: state.selectedSpecialities.filter(
-              (skill : any) => skill.ID !== action.payload[1].ID
+              (skill: any) => skill.ID !== action.payload[1].ID
             ),
           };
         }
+      case "setLoading":
+        return { ...state, isLoading: action.payload };
 
       default:
         throw new Error("Unknown action");
     }
   }
   const [
-    { specialities, selectedSpecialities, query, activeCurrStepIndex },
+    {
+      specialities,
+      selectedSpecialities,
+      query,
+      isLoading,
+      activeCurrStepIndex,
+      valueHolder,
+    },
     dispatch,
   ] = useReducer(reducer, initialState);
 
   useEffect(
+    
     function () {
+    
       query.length > 2
         ? getSkills(query)
             .then((res: any) => {
               dispatch({ type: "ready", payload: res.payload });
+              dispatch({ type: "setLoading", payload: 0 });
             })
             .catch((error) => console.log(error))
         : " ";
+      
     },
+
     [query]
   );
 
@@ -64,7 +81,9 @@ const useChoosingSpeciality = () => {
     specialities,
     selectedSpecialities,
     query,
+    isLoading,
     activeCurrStepIndex,
+    valueHolder,
     dispatch,
   };
 };

@@ -5,7 +5,7 @@ import {motion} from "framer-motion";
 import {InputAdornment, OutlinedInput} from "@mui/material";
 import {MuiOtpInput} from "mui-one-time-password-input";
 import AppButtonNew from "@/components/common/AppButtonNew";
-import useEntry from "@/components/users/entry/_hooks/useEntry";
+import useEntry from "@/components/tech/entry/_hooks/useEntry";
 
 const Entry = () => {
 
@@ -273,14 +273,14 @@ const Entry = () => {
                                     <AppButtonNew
                                         onClick={handlePhoneNumber}
                                         disabled={!enteredPhoneNumber}
-                                        iconUrl={enteredPhoneNumber ? '/icons/arrowRight/icon.svg' : '/icons/arrowRightDisable/icon.svg'}
+                                        iconUrl={enteredPhoneNumber ? '/assets/icons/arrowRight/icon.svg' : '/assets/icons/arrowRightDisable/icon.svg'}
                                         text={'بعدی'}
                                     />
                                     :
                                     <AppButtonNew
                                         onClick={handleVerifyCode}
                                         disabled={!enteredOtp}
-                                        iconUrl={enteredOtp ? '/icons/arrowRight/icon.svg' : '/icons/arrowRightDisable/icon.svg'}
+                                        iconUrl={enteredOtp ? '/assets/icons/arrowRight/icon.svg' : '/assets/icons/arrowRightDisable/icon.svg'}
                                         text={'ورود'}
                                     />
                                 }

@@ -2,13 +2,13 @@
 import React from 'react'
 import {Swiper, SwiperSlide} from "swiper/react";
 import {A11y, Navigation, Pagination, Scrollbar} from "swiper/modules";
-import style from "@/components/users/intro/intro.module.scss";
-import useIntro from "@/components/users/intro/_hooks/useIntro";
+import style from "@/components/tech/intro/intro.module.scss";
+import useIntro from "@/components/tech/intro/_hooks/useIntro";
 import AppImage from '@/components/common/AppImage'
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import "swiper/css";
-import {swiperData} from "@/components/users/intro/intro.static";
+import {swiperData} from "@/components/tech/intro/intro.static";
 
 const Intro = () => {
     const {activeCurrStepIndex, setActiveCurrStepIndex, swiperRef, router} = useIntro()
@@ -62,7 +62,9 @@ const Intro = () => {
             <div className={style.footer}>
                 <button
                     onClick={() => {
-                        activeCurrStepIndex === 2 ? router.push('/request') : swiperRef.current?.slideNext()
+                        activeCurrStepIndex === 2
+                          ? router.push("/request")
+                          : swiperRef.current?.slideNext();
                     }}
                     className={style.nextButton}
                 >
