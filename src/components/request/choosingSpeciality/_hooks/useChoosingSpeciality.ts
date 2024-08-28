@@ -12,7 +12,7 @@ const useChoosingSpeciality = () => {
   function reducer(state: any, action: any) {
     switch (action.type) {
       case "changeQuery":
-        if (state.query.length < 3) return {...state , query: action.payload, valueHolder : 'حداقل سه حرف باید وارد کنید'}
+        if (state.query.length < 3) return {...state , isLoading : 1 ,query: action.payload, valueHolder : 'حداقل سه حرف باید وارد کنید'}
         return { ...state, query: action.payload , isLoading : 1 };
       case "ready":
         return { ...state, specialities: action.payload };

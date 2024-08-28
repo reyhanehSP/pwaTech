@@ -32,7 +32,6 @@ export const verifySMS = async (phoneNumber:string,verifyCode:string) => {
         },
       }
     );
-    console.log
     return response.data
 
 }

@@ -18,12 +18,12 @@ const LocationServices: React.FC<PropType> = ({
 }) => {
   const {
     province,
-    handleSubmit,
     handleChangeProvince,
+    handleSubmit,
     city,
-    setCity,
     selectedID,
   } = useLocation();
+
   return (
     <div className={style.content}>
       <div className={style.paperTitle}>
@@ -49,7 +49,6 @@ const LocationServices: React.FC<PropType> = ({
         <FormControl sx={{ m: 1, minWidth: 120 }} size="medium">
           <InputLabel id="demo-select-small-label">شهر</InputLabel>
           <Select
-           
             value={selectedID}
             labelId="demo-select-small-label"
             id="demo-select-small"
@@ -70,10 +69,11 @@ const LocationServices: React.FC<PropType> = ({
           >
             مرحله بعد
           </button>
+        
           <button
             onClick={() => nextLevel({ type: "InformationExpert" })}
             className={
-              activeCurState === 3 ? style.disabledBackButton : style.backButton
+              activeCurState === 3 ? style.backButton : style.disabledBackButton
             }
           >
             <AppImage

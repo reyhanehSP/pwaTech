@@ -3,19 +3,30 @@ import {InformationType} from "@/components/request/informationExpert/_type/type
 // import {useInformation} from "@/components/informationExpert/_api/informationApi"
 const useInformation = () => {
   
-  const initialState  = {
-    information: [] ,
-  
+  const initialState = {
+    firstName: "",
+    lastName: "",
+    nationalCode: 0,
+    gender: 0,
+    activity : 0,
+    activeCurState: null,
   };  
 
   function reducer (state : any , action : any) {
     switch (action.type) {
-        case "updateInformation" :
-          return {...state , information : action.payload}
-   
+      case "handleFirstNameChange":
+        return { ...state, firstName: action.payload, activeCurState: 2 };
+      case "handleLastNameChange":
+        return { ...state, lastName: action.payload, activeCurState: 2 };
+      case "handleNationalCodeChange":
+        return { ...state, nationalCode: action.payload, activeCurState: 2 };
+      case "handleGenderChange":
+        return { ...state, gender: action.payload, activeCurState: 2 };
+      case "handleActivityChange":
+        return { ...state, activity: action.payload, activeCurState: 2 };
     }
   }
-  const [{information } , dispatch] = useReducer(reducer , initialState);
+  const [state , dispatch] = useReducer(reducer , initialState);
 
   // const [information, setInformation] = useState(initialInformation);
   // const handleFirstNameChange = (firstName: string) => {
@@ -42,7 +53,7 @@ const useInformation = () => {
   // };
 
   return {
-    information,
+   state,
 
  dispatch
   };

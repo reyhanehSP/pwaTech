@@ -17,46 +17,58 @@ import {
 import Link from "next/link";
 import Card from "@mui/material/Card";
 import { useRouter } from "next/navigation";
-function a11yProps(index: number) {
-  return {
-    id: `simple-tab-${index}`,
-    "aria-controls": `simple-tabpanel-${index}`,
-  };
-}
+import BottomNav from "@/components/common/BottomNavigation";
+import TopNavigation from "@/components/common/TopNavigation";
+import style from '@/components/panel/orders/_styles/Orders.module.scss'
+import BreadCrumbs from "@/components/common/BreadCrumb";
+// function a11yProps(index: number) {
+//   return {
+//     id: `simple-tab-${index}`,
+//     "aria-controls": `simple-tabpanel-${index}`,
+//   };
+// }
 
-interface TabPanelProps {
-  children?: React.ReactNode;
-  index: number;
-  value: number;
-}
-function CustomTabPanel(props: TabPanelProps) {
-  const { children, value, index, ...other } = props;
+// interface TabPanelProps {
+//   children?: React.ReactNode;
+//   index: number;
+//   value: number;
+// }
+// function CustomTabPanel(props: TabPanelProps) {
+//   const { children, value, index, ...other } = props;
 
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
-    </div>
-  );
-}
+//   // return (
+//   //   // <div
+//   //   //   role="tabpanel"
+//   //   //   hidden={value !== index}
+//   //   //   id={`simple-tabpanel-${index}`}
+//   //   //   aria-labelledby={`simple-tab-${index}`}
+//   //   //   {...other}
+//   //   // >
+//   //   //   {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
+//   //   // </div>
+//   // );
+// }
 const Main = () => {
-    const [value, setValue] = useState(0);
-    const router = useRouter()
-    const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-      setValue(newValue);
-    };
-     const handleSubmit = () => {
-      
-      //  router.push("/register/services");
-     };
+  // const [value, setValue] = useState(0);
+  // const router = useRouter()
+  // const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+  //   setValue(newValue);
+  // };
+  //  const handleSubmit = () => {
+
+  //   //  router.push("/register/services");
+  //  };
   return (
-    <Container maxWidth="lg" className="h-full">
-      <div className="main-layout">
+    <>
+      <TopNavigation />
+      <Container maxWidth="lg" className={style.wrapper}>
+        <BreadCrumbs
+          items={[
+            { title: "داشبورد", url: "/main" },
+            { title: "سفارشات", url: "/mian/orders" },
+          ]}
+        />
+        {/* <div className="main-layout">
         <div className="flex gap-3">
           <Link href="/main/order">سفارش‌ها</Link>
           <Link href="#">کارهای انجام شده</Link>
@@ -195,8 +207,10 @@ const Main = () => {
             </Card>
           </CustomTabPanel>
         </div>
-      </div>
-    </Container>
+      </div> */}
+      </Container>
+      <BottomNav activeRoute={2} />
+    </>
   );
 };
 export default Main;
