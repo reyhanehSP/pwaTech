@@ -16,8 +16,8 @@ import AppImage from "@/components/common/AppImage";
 import {PropType} from "@/components/request/informationExpert/_type/type"
 
 const InformationExpert: React.FC<PropType>  = ({nextLevel, activeCurState}) => {
-  const { information, dispatch } = useInformation();
-
+  const { state, dispatch } = useInformation();
+  
   return (
     <div className={style.content}>
       <div className={style.paperTitle}>
@@ -29,7 +29,7 @@ const InformationExpert: React.FC<PropType>  = ({nextLevel, activeCurState}) => 
           <FormLabel className={style.formLabel}>اطلاعات شخصی</FormLabel>
           <TextField
             className={style.inputText}
-            value={information.firstName}
+            value={state.firstName}
             onChange={(e) =>
               dispatch({
                 type: "handleFirstNameChange",
@@ -42,7 +42,7 @@ const InformationExpert: React.FC<PropType>  = ({nextLevel, activeCurState}) => 
           />
           <TextField
             className={style.inputText}
-            value={information.lastName}
+            value={state.lastName}
             onChange={(e) =>
               dispatch({
                 type: "handleLastNameChange",
@@ -55,7 +55,7 @@ const InformationExpert: React.FC<PropType>  = ({nextLevel, activeCurState}) => 
           />
           <TextField
             className={style.inputText}
-            value={information.nationalCode}
+            value={state.nationalCode}
             onChange={(e) =>
               dispatch({
                 type: "handleNationalCodeChange",
@@ -76,7 +76,7 @@ const InformationExpert: React.FC<PropType>  = ({nextLevel, activeCurState}) => 
             جنسیت
           </FormLabel>
           <RadioGroup
-            value={information.gender}
+            value={state.gender}
             onChange={(e) =>
               dispatch({
                 type: "handleGenderChange",
@@ -101,11 +101,11 @@ const InformationExpert: React.FC<PropType>  = ({nextLevel, activeCurState}) => 
           </FormLabel>
           <div className="flex">
             <RadioGroup
-              value={information.gender}
+              value={state.gender}
               onChange={(e) =>
                 dispatch({
-                  type: "handleGenderChange",
-                  payload: e.target.value,
+                  type: "handleActivityChange",
+                  payload: e.target.checked,
                 })
               }
               aria-labelledby="demo-radio-buttons-group-label"
@@ -125,7 +125,7 @@ const InformationExpert: React.FC<PropType>  = ({nextLevel, activeCurState}) => 
             </RadioGroup>
           </div>
         </FormControl>
-        
+
         <div className={style.footer}>
           <button
             className={style.nextButton}
@@ -133,7 +133,7 @@ const InformationExpert: React.FC<PropType>  = ({nextLevel, activeCurState}) => 
             onClick={() =>
               nextLevel({
                 type: "locationServices",
-                payload: 0,
+                payload: state,
               })
             }
           >
@@ -142,7 +142,7 @@ const InformationExpert: React.FC<PropType>  = ({nextLevel, activeCurState}) => 
           <button
             onClick={() => nextLevel({ type: "ChoosingSpecialty" })}
             className={
-              activeCurState === 2 ? style.disabledBackButton : style.backButton
+              activeCurState === 2 ? style.backButton : style.disabledBackButton
             }
           >
             <AppImage

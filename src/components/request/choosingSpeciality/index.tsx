@@ -9,11 +9,10 @@ import {
 import React from "react";
 import style from "@/components/request/choosingSpeciality/_styles/ChoosingSpeciality.module.scss";
 
-import IconButton from "@mui/material/IconButton";
-import SearchIcon from "@mui/icons-material/Search";
 import useChoosingSpeciality from "@/components/request/choosingSpeciality/_hooks/useChoosingSpeciality";
 import { PropType } from "@/components/request/choosingSpeciality/_types/type";
 import Loading from "@/components/common/Loading";
+
 const ChoosingSpeciality: React.FC<PropType> = ({ nextLevel }) => {
   const {
     query,
@@ -68,6 +67,7 @@ const ChoosingSpeciality: React.FC<PropType> = ({ nextLevel }) => {
       </div>
       <div className={style.footer}>
         <button
+          
           className={style.nextButton}
           type="submit"
           onClick={() =>

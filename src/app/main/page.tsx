@@ -1,4 +1,4 @@
-import Dashboard from "@/components/panel";
+import Dashboard from "@/components/panel/dashboard";
 const MainPage = () => {
     return <Dashboard />;
 }
