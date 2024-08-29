@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import style from "@/components/common/bottomNavigation/bottomNav.module.scss";
+import style from "@/components/common/BottomNavigation/bottomNav.module.scss";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import DashboardIcon from "@mui/icons-material/Dashboard";
