@@ -1,18 +1,12 @@
 "use client";
-import {
-  Container,
-  Divider,
-  IconButton,
-  InputBase,
-  Paper,
-} from "@mui/material";
+import {Container} from "@mui/material";
 import { useRouter } from "next/navigation";
 import style from "@/components/panel/costs/_styles/Cost.module.scss";
 import Link from "next/link";
-import SearchIcon from "@mui/icons-material/Search";
 import BottomNav from "@/components/common/BottomNavigation";
 import TopNavigation from "@/components/common/TopNavigation";
 import BreadCrumbs from "@/components/common/BreadCrumb";
+import InputSearch from "@/components/common/InputSearch/InputSearch";
 const Costs = () => {
   const router = useRouter();
 
@@ -30,46 +24,42 @@ const Costs = () => {
           ]}
         />
 
-        <div className="main-layout">
-          <span>هزینه ها </span>
-          <Paper
-            component="form"
-            sx={{
-              p: "2px 4px",
-              display: "flex",
-              alignItems: "center",
-              width: 400,
-            }}
-          >
-            <InputBase
-              sx={{ ml: 1, flex: 1 }}
-              placeholder="سفارش های من"
-              inputProps={{ "aria-label": "search google maps" }}
-            />
-            <IconButton type="button" sx={{ p: "10px" }} aria-label="search">
-              <SearchIcon />
-            </IconButton>
-            <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
-          </Paper>
-          <p>سفارش مورد نظر را برای وارد کردن هزینه انتخاب کنید</p>
+        <div className={style.mainLayout}>
+          <p className={style.title}>
+            سفارش مورد نظر را برای وارد کردن هزینه انتخاب کنید.
+          </p>
 
-          <Link href="/main/costs/detail">
-            <div className="border border-1">
-              کد سفارش : 123
-              <br />
-              تاریخ
-              <br />
-              کرج حصار
-            </div>
+          <InputSearch />
+
+          <Link className={style.expenseCard} href={`/main/costs/1`}>
+            <ul>
+              <li>
+                <span>کد سفارش :</span>
+                <span>123</span>
+              </li>
+              <li>
+                <span>تاریخ :</span>
+                <span>1403/02/02</span>
+              </li>
+              <li>
+                <span>کرج حصار</span>
+              </li>
+            </ul>
           </Link>
-          <Link href="/main/costs/detail">
-            <div className="border border-1">
-              کد سفارش : 123
-              <br />
-              تاریخ
-              <br />
-              کرج حصار
-            </div>
+          <Link className={style.expenseCard} href={`/main/costs/1`}>
+            <ul>
+              <li>
+                <span>کد سفارش :</span>
+                <span>123</span>
+              </li>
+              <li>
+                <span>تاریخ :</span>
+                <span>1403/02/02</span>
+              </li>
+              <li>
+                <span>کرج حصار</span>
+              </li>
+            </ul>
           </Link>
         </div>
         <BottomNav activeRoute={3} />

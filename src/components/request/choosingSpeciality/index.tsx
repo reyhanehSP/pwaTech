@@ -12,6 +12,7 @@ import style from "@/components/request/choosingSpeciality/_styles/ChoosingSpeci
 import useChoosingSpeciality from "@/components/request/choosingSpeciality/_hooks/useChoosingSpeciality";
 import { PropType } from "@/components/request/choosingSpeciality/_types/type";
 import Loading from "@/components/common/Loading";
+import InputSearch from "@/components/common/InputSearch/InputSearch";
 
 const ChoosingSpeciality: React.FC<PropType> = ({ nextLevel }) => {
   const {
@@ -29,18 +30,15 @@ const ChoosingSpeciality: React.FC<PropType> = ({ nextLevel }) => {
         <h2>در چه زمینه ای ارائه خدمات می‌دهید؟</h2>
       </div>
 
-      <TextField
-        label="لیست تخصص ها"
-        id="speciality"
-        size="small"
-        className={style.inputSearch}
+      <InputSearch
         value={query}
         placeholder={valueHolder}
-        onChange={(e) =>
+        onChange={(e : any) =>
           dispatch({ type: "changeQuery", payload: e.target.value })
         }
       />
-     
+
+
       <div dir="rtl">
         <div className={style.list}>
           {isLoading === 1 ? <Loading /> : ""}
@@ -67,7 +65,6 @@ const ChoosingSpeciality: React.FC<PropType> = ({ nextLevel }) => {
       </div>
       <div className={style.footer}>
         <button
-          
           className={style.nextButton}
           type="submit"
           onClick={() =>

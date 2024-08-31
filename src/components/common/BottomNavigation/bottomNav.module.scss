@@ -1,4 +1,4 @@
-$primary: #eca323 !important;
+$primary: #3d4977 !important;
 $purple: #5b37b7;
 $pink: #c9379d;
 $ocher: #e6a919;
@@ -6,7 +6,8 @@ $cyan: #1194aa;
 $transition: 0.3s ease;
 
 .bottomNavigation {
-  background-color: $primary;
+  background-image: linear-gradient(to top, #7569F4, #9187F6);
+    box-shadow: 0 4px 16px rgba(118, 106, 244, 0.2392156863);
   width: 100%;
   position: fixed;
   left: 0;
@@ -28,7 +29,7 @@ $transition: 0.3s ease;
     .btn-nav {
       font-weight: bold;
       height: 100%;
-      color: currentColor;
+      color: #fff;
       svg {
         font-size: 1.9rem !important;
       }

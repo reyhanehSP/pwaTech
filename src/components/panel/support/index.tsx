@@ -5,24 +5,24 @@ import TopNavigation from "@/components/common/TopNavigation";
 import { Container } from "@mui/material";
 import style from "@/components/panel/support/_styles/Support.module.scss"
 import BreadCrumbs from "@/components/common/BreadCrumb";
+import Link from "next/link";
+
+
 const Support = () => {
   return (
     <>
       <TopNavigation />
       <Container maxWidth="lg" className={style.wrapper}>
-        <BreadCrumbs items={[{ title: "داشبورد", url: "/main" } , {title : "پشتیبانی" , url : '/mian/support'}]} />
-        <div className="main-layout">
-          <span>پشتیبانی</span>
-
-          <div className="border border-black border-1 my-2 w-3/5 p-2">
-            پیامک های الو بگو
-          </div>
-          <div className="border border-black border-1 my-2 w-3/5 p-2">
-            تماس با پشتیبانی
-          </div>
-          <div className="border border-black border-1 my-2 w-3/5 p-2">
-            چت با مشتری
-          </div>
+        <BreadCrumbs
+          items={[
+            { title: "داشبورد", url: "/main" },
+            { title: "پشتیبانی", url: "/mian/support" },
+          ]}
+        />
+        <div className={style.linkList}>
+          <Link href="/">پیامک های الو بگو</Link>
+          <Link href="tel:02122228300"> تماس با پشتیبانی</Link>
+          <Link href="/"> چت با مشتری</Link>
         </div>
       </Container>
       <BottomNav activeRoute={4} />

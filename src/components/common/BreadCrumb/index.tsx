@@ -1,11 +1,11 @@
-"use-react"
+"use-client";
 import React from "react";
 import { emphasize, styled } from "@mui/material/styles";
 import Breadcrumbs from "@mui/material/Breadcrumbs";
 import Chip from "@mui/material/Chip";
 import style from "@/components/common/BreadCrumb/BreadCrumbs.module.scss"
 
-import {BreadCrumb} from "@/components/common/BreadCrumb/_types/type"
+import { BreadCrumbType } from "@/components/common/BreadCrumb/_types/type";
 const StyledBreadcrumb = styled(Chip)(({ theme }) => {
   const backgroundColor =
     theme.palette.mode === "light"
@@ -31,11 +31,11 @@ function handleClick(event: React.MouseEvent<Element, MouseEvent>) {
   console.info("You clicked a breadcrumb.");
 }
 
-const BreadCrumbs: React.FC<BreadCrumb> = ({ items }) => {
+const BreadCrumbs: React.FC<BreadCrumbType> = ({ items }) => {
   return (
     <div role="presentation" onClick={handleClick}>
       <Breadcrumbs aria-label="breadcrumb" className={style.braedcrumbs}>
-        {items.map((item: any, index : number) => (
+        {items.map((item: any, index: number) => (
           <StyledBreadcrumb
             key={index}
             component="a"

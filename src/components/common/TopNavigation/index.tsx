@@ -58,7 +58,7 @@ const TopNavigation = () => {
                 fontFamily: "monospace",
                 fontWeight: 700,
                 letterSpacing: ".3rem",
-                color: "inherit",
+                color: "#fff",
                 textDecoration: "none",
               }}
             >
@@ -72,7 +72,6 @@ const TopNavigation = () => {
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
                 onClick={handleOpenNavMenu}
-                color="inherit"
               >
                 <MenuIcon />
               </IconButton>
@@ -112,7 +111,7 @@ const TopNavigation = () => {
                
                 fontWeight: 700,
                 letterSpacing: ".1rem",
-                color: "inherit",
+                color: "#fff",
                 textDecoration: "none",
               }}
             >
@@ -132,12 +131,12 @@ const TopNavigation = () => {
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-              {/* <AppImage
-                width={50}
-                height={50}
+              <AppImage
+                width={40}
+                height={40}
                 alt="avatar"
                 src={"/assets/images/avatar.png"}
-              /> */}
+              />
               </IconButton>
               </Tooltip>
               <Menu

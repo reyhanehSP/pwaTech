@@ -1,5 +1,16 @@
 .AppBar {
-    background-color: rgb(186 57 57) !important;
-    border-bottom-right-radius:20px;
-    border-bottom-left-radius:20px;
+    background-image: linear-gradient(to top, #7569F4, #9187F6);
+    box-shadow: 0 4px 16px rgba(118, 106, 244, 0.2392156863);
+    width: auto !important;
+    right: 10px !important;
+    left: 10px !important;
+    box-shadow: 0 4px 16px rgba(118, 106, 244, 0.2392156863);
+    border-radius: 8px;
+    margin: 10px 0;
+    color: #fff;
+    :global {
+        .muirtl-i4bv87-MuiSvgIcon-root {
+            color: #fff;
+        }
+    }
 }

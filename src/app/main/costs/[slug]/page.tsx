@@ -1,4 +1,4 @@
-import CostDetail from "@/components/panel/costs/costDetail";
+import CostDetail from "@/components/panel/costs/details";
 
 const CostDetailPage = () => {
   return <CostDetail />;

@@ -1,3 +1,3 @@
-export interface BreadCrumb {
+export interface BreadCrumbType {
     items : any
 }
