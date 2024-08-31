@@ -3,3 +3,71 @@
   padding-bottom: 65px;
   height: 100%;
 }
+.mainLayout {
+  height: 100%;
+}
+.customTab {
+  display: flex;
+  :global {
+    button {
+      padding: 10px;
+      box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.1);
+      background-color: #f7f7f7 !important;
+    }
+    button[aria-selected="true"] {
+      background-color: #ddd !important;
+      font-size: 1rem;
+      font-weight: bold;
+    }
+    :nth-child(1) {
+      border-bottom-right-radius: 12px;
+    }
+    :nth-child(4) {
+      border-bottom-left-radius: 12px;
+    }
+  }
+}
+.tabContent {
+  font-weight: 700;
+  :global {
+    h1 {
+      padding: 10px 0;
+      text-align: center;
+    }
+  }
+}
+.tabInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+    :global {
+      :nth-child(1) {
+        font-weight: 700;
+      }
+    }
+}
+.badgeInfo {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  color: white;
+  background-color: rgb(108, 30, 210);
+}
+.CustomForm {
+  background-color: rgba(249, 249, 242, 0.9);
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  margin: 10px 0;
+  padding: 10px;
+  max-height: 215px;
+  overflow-y: auto;
+}
+.footer {
+  text-align: center;
+}

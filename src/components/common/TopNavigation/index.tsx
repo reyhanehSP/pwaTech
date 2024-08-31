@@ -14,10 +14,11 @@ import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import style from "@/components/common/TopNavigation/TopNavigation.module.scss";
 import AppImage from "@/components/common/AppImage";
+import Link from "next/link";
 
 const TopNavigation = () => {
   const pages = ["سفارشات", "هزینه‌ها", "پشتیبانی"];
-  const settings = ["پروفایل", "خروج"];
+  const settings = [{title :"پروفایل" , url : "/main/profile"}, {title:"خروج" , url :'/'}];
 
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
@@ -108,14 +109,14 @@ const TopNavigation = () => {
                 mr: 2,
                 display: { xs: "flex", md: "none" },
                 flexGrow: 1,
-               
+
                 fontWeight: 700,
                 letterSpacing: ".1rem",
                 color: "#fff",
                 textDecoration: "none",
               }}
             >
-             به الو بگو خوش آمدید
+              به الو بگو خوش آمدید
             </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
               {pages.map((page) => (
@@ -130,14 +131,14 @@ const TopNavigation = () => {
             </Box>
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-              <AppImage
-                width={40}
-                height={40}
-                alt="avatar"
-                src={"/assets/images/avatar.png"}
-              />
-              </IconButton>
+                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                  <AppImage
+                    width={40}
+                    height={40}
+                    alt="avatar"
+                    src={"/assets/images/avatar.png"}
+                  />
+                </IconButton>
               </Tooltip>
               <Menu
                 sx={{ mt: "45px" }}
@@ -156,9 +157,9 @@ const TopNavigation = () => {
                 onClose={handleCloseUserMenu}
               >
                 {settings.map((setting) => (
-                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                  <MenuItem key={setting.title} onClick={handleCloseUserMenu}>
                     <Typography sx={{ textAlign: "center" }}>
-                      {setting}
+                      <Link className={style.navLink} href={setting.url}> {setting.title}</Link>
                     </Typography>
                   </MenuItem>
                 ))}

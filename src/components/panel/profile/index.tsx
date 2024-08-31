@@ -2,83 +2,44 @@
 
 import {
   Button,
+  Checkbox,
   Container,
-  Divider,
-  FormControl,
+  FormControlLabel,
   FormGroup,
-  IconButton,
-  ImageList,
-  ImageListItem,
-  InputBase,
-  Paper,
   TextField,
 } from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
 import { Tabs } from "@mui/base/Tabs";
 import { TabsList } from "@mui/base/TabsList";
 import { TabPanel } from "@mui/base/TabPanel";
 import { Tab } from "@mui/base/Tab";
-import { useRouter } from "next/navigation";
+
 import BottomNav from "@/components/common/BottomNavigation";
 import BreadCrumbs from "@/components/common/BreadCrumb";
 import style from "@/components/panel/profile/_styles/Profile.module.scss"
-const itemData = [
-  {
-    img: "https://images.unsplash.com/photo-1551963831-b3b1ca40c98e",
-    title: "Breakfast",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1551782450-a2132b4ba21d",
-    title: "Burger",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1522770179533-24471fcdba45",
-    title: "Camera",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c",
-    title: "Coffee",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1533827432537-70133748f5c8",
-    title: "Hats",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1558642452-9d2a7deb7f62",
-    title: "Honey",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1516802273409-68526ee1bdd6",
-    title: "Basketball",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1518756131217-31eb79b20e8f",
-    title: "Fern",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1597645587822-e99fa5d45d25",
-    title: "Mushrooms",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1567306301408-9b74779a11af",
-    title: "Tomato basil",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1471357674240-e1a485acb3e1",
-    title: "Sea star",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1589118949245-7d38baf380d6",
-    title: "Bike",
-  },
-];
+import TopNavigation from "@/components/common/TopNavigation";
+import InputSearch from "@/components/common/InputSearch/InputSearch";
+
+import { FilePond, registerPlugin } from "react-filepond";
+
+registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview);
+
+// Import FilePond styles
+import "filepond/dist/filepond.min.css";
+
+import FilePondPluginImageExifOrientation from "filepond-plugin-image-exif-orientation";
+import FilePondPluginImagePreview from "filepond-plugin-image-preview";
+import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";
+
+import useProfile from "@/components/panel/profile/_hooks/useProfile";
+// Register the plugins
+registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview);
 const Profile = () => {
-  const router = useRouter();
-  const handleSubmit = (value: string) => {
-    router.push("/register");
-  };
+ 
+    const {files , setFiles , handleSubmit} = useProfile()
+
   return (
     <>
+      <TopNavigation />
       <Container maxWidth="lg" className={style.wrapper}>
         <BreadCrumbs
           items={[
@@ -87,103 +48,79 @@ const Profile = () => {
           ]}
         />
 
-        <div className="main-layout">
-          <span>پروفایل</span>
+        <div className={style.mainLayout}>
           <Tabs defaultValue={0}>
-            <TabsList>
+            <TabsList className={style.customTab}>
               <Tab value={0} className="mx-1">
-                <Button variant="outlined">درباره من (تخصص ها)</Button>
+                درباره من
               </Tab>
               <Tab value={1} className="mx-1">
-                <Button variant="outlined"> تصاویر نمونه کار</Button>
+                نمونه کار
               </Tab>
               <Tab value={2} className="mx-1">
-                <Button variant="outlined"> اطلاعات تماس</Button>
+                اطلاعات تماس
               </Tab>
               <Tab value={3} className="mx-1">
-                <Button variant="outlined">
-                  {" "}
-                  چه محدوده هایی خدمات ارائه میدهید
-                </Button>
+                محدوده خدمات
               </Tab>
             </TabsList>
             <TabPanel value={0}>
-              <div>
-                <span>درباره من</span>
+              <div className={style.tabContent}>
+                <h1>درباره من</h1>
                 <p>قصد ارائه چه خدماتی دارید؟</p>
-                <p>
-                  تعداد تخصص های انتخاب شده
-                  <span>2</span>
+                <p className={style.tabInfo}>
+                  <span>تعداد تخصص های انتخاب شده</span>
+                  <span className={style.badgeInfo}>2</span>
                 </p>
-                <Paper
-                  component="form"
-                  sx={{
-                    p: "2px 4px",
-                    display: "flex",
-                    alignItems: "center",
-                    width: 400,
-                  }}
-                >
-                  <InputBase
-                    sx={{ ml: 1, flex: 1 }}
-                    placeholder="تعمیر"
-                    inputProps={{ "aria-label": "search google maps" }}
+                <InputSearch />
+                <FormGroup className={style.CustomForm}>
+                  <FormControlLabel
+                    control={<Checkbox />}
+                    label=" تعمیر یخچال"
                   />
-                  <IconButton
-                    type="button"
-                    sx={{ p: "10px" }}
-                    aria-label="search"
+                  <FormControlLabel
+                    control={<Checkbox />}
+                    label=" تعمیر لباسشویی"
+                  />
+                  <FormControlLabel
+                    control={<Checkbox />}
+                    label=" تعمیر ماکروفر"
+                  />
+                </FormGroup>
+
+                <div className={style.footer}>
+                  <Button
+                    variant="contained"
+                    onClick={() => handleSubmit("register")}
                   >
-                    <SearchIcon />
-                  </IconButton>
-                  <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
-                </Paper>
-                <div className="border border-black border-1 my-2 w-3/5 p-2">
-                  تعمیر یخچال
-                </div>
-                <div className="border border-black border-1 my-2 w-3/5 p-2">
-                  تعمیر لباسشویی
-                </div>
-                <div className="border border-black border-1 my-2 w-3/5 p-2">
-                  تعمیر ماکروفر
+                    تایید
+                  </Button>
                 </div>
               </div>
-              <Button
-                variant="contained"
-                onClick={() => handleSubmit("register")}
-              >
-                تایید
-              </Button>
             </TabPanel>
             <TabPanel value={1}>
-              تصاویر نمونه کار
-              <p>عکس از قبل و بعد از انجام کار</p>
-              <p>عکس از خودتون و تیمتون در حین انجام کار</p>
-              <p>عکس از لوازم و تجهیزات</p>
+              <div className={style.tabContent}>
+                <h1>تصاویر نمونه کار</h1>
+                <FilePond
+                  files={files}
+                  allowMultiple={true}
+                  maxFiles={3}
+                  server="/api"
+                  name="files"
+                  labelIdle='Drag & Drop your files or <span class="filepond--label-action">Browse</span>'
+                />
+              </div>
             </TabPanel>
             <TabPanel value={2}>
-              <FormGroup>
-                <div className="flex flex-col gap-5">
-                  <TextField
-                    label="نام"
-                    id="outlined-size-small"
-                    defaultValue="نام"
-                    size="small"
-                  />
-                  <TextField
-                    label="نام خانوادگی"
-                    id="outlined-size-small"
-                    defaultValue="نام خانوادگی"
-                    size="small"
-                  />
-                  <TextField
-                    label="کدملی"
-                    id="outlined-size-small"
-                    defaultValue="کدملی"
-                    size="small"
-                  />
-                </div>
-              </FormGroup>
+              <div className={style.tabContent}>
+                <h1>تصاویر نمونه کار</h1>
+                <ul>
+                  <li>
+                    
+                  </li>
+                </ul>
+
+              </div>
             </TabPanel>
             <TabPanel value={3}>محدوده های ارائه خدمات</TabPanel>
           </Tabs>

@@ -1,5 +1,5 @@
 export interface IAppButton {
     text: string,
-    onClick: () => void,
+    onClick?: () => void,
     disabled?: boolean
 }
