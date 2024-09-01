@@ -1,12 +1,15 @@
 "use client";
 
 import {
+  Box,
   Button,
   Checkbox,
   Container,
   FormControlLabel,
   FormGroup,
+  Grid,
   TextField,
+  Typography,
 } from "@mui/material";
 import { Tabs } from "@mui/base/Tabs";
 import { TabsList } from "@mui/base/TabsList";
@@ -15,7 +18,7 @@ import { Tab } from "@mui/base/Tab";
 
 import BottomNav from "@/components/common/BottomNavigation";
 import BreadCrumbs from "@/components/common/BreadCrumb";
-import style from "@/components/panel/profile/_styles/Profile.module.scss"
+import style from "@/components/panel/profile/_styles/Profile.module.scss";
 import TopNavigation from "@/components/common/TopNavigation";
 import InputSearch from "@/components/common/InputSearch/InputSearch";
 
@@ -34,8 +37,7 @@ import useProfile from "@/components/panel/profile/_hooks/useProfile";
 // Register the plugins
 registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview);
 const Profile = () => {
- 
-    const {files , setFiles , handleSubmit} = useProfile()
+  const { files, setFiles, handleSubmit } = useProfile();
 
   return (
     <>
@@ -43,12 +45,12 @@ const Profile = () => {
       <Container maxWidth="lg" className={style.wrapper}>
         <BreadCrumbs
           items={[
-            { title: "داشبورد", url: "/main" },
+           
             { title: "پروفایل", url: "/mian/profile" },
           ]}
         />
 
-        <div className={style.mainLayout}>
+        <Box className={style.mainLayout}>
           <Tabs defaultValue={0}>
             <TabsList className={style.customTab}>
               <Tab value={0} className="mx-1">
@@ -64,67 +66,122 @@ const Profile = () => {
                 محدوده خدمات
               </Tab>
             </TabsList>
-            <TabPanel value={0}>
-              <div className={style.tabContent}>
-                <h1>درباره من</h1>
-                <p>قصد ارائه چه خدماتی دارید؟</p>
-                <p className={style.tabInfo}>
-                  <span>تعداد تخصص های انتخاب شده</span>
-                  <span className={style.badgeInfo}>2</span>
-                </p>
-                <InputSearch />
-                <FormGroup className={style.CustomForm}>
-                  <FormControlLabel
-                    control={<Checkbox />}
-                    label=" تعمیر یخچال"
-                  />
-                  <FormControlLabel
-                    control={<Checkbox />}
-                    label=" تعمیر لباسشویی"
-                  />
-                  <FormControlLabel
-                    control={<Checkbox />}
-                    label=" تعمیر ماکروفر"
-                  />
-                </FormGroup>
+            <TabPanel value={0} className={style.tabContent}>
+              <Typography variant="h6" component="h1">
+                درباره من
+              </Typography>
 
-                <div className={style.footer}>
-                  <Button
-                    variant="contained"
-                    onClick={() => handleSubmit("register")}
-                  >
-                    تایید
-                  </Button>
-                </div>
-              </div>
-            </TabPanel>
-            <TabPanel value={1}>
-              <div className={style.tabContent}>
-                <h1>تصاویر نمونه کار</h1>
-                <FilePond
-                  files={files}
-                  allowMultiple={true}
-                  maxFiles={3}
-                  server="/api"
-                  name="files"
-                  labelIdle='Drag & Drop your files or <span class="filepond--label-action">Browse</span>'
+              <Typography component="p">قصد ارائه چه خدماتی دارید؟</Typography>
+              <Typography component="p" className={style.tabInfo}>
+                <Typography>تعداد تخصص های انتخاب شده</Typography>
+                <Typography className={style.badgeInfo}>2</Typography>
+              </Typography>
+              <InputSearch />
+              <FormGroup className={style.CustomForm}>
+                <FormControlLabel control={<Checkbox />} label=" تعمیر یخچال" />
+                <FormControlLabel
+                  control={<Checkbox />}
+                  label=" تعمیر لباسشویی"
                 />
-              </div>
+                <FormControlLabel
+                  control={<Checkbox />}
+                  label=" تعمیر ماکروفر"
+                />
+              </FormGroup>
+              <Box className={style.footer}>
+                <Button
+                  variant="contained"
+                  onClick={() => handleSubmit("register")}
+                >
+                  تایید
+                </Button>
+              </Box>
             </TabPanel>
-            <TabPanel value={2}>
-              <div className={style.tabContent}>
-                <h1>تصاویر نمونه کار</h1>
-                <ul>
-                  <li>
-                    
-                  </li>
-                </ul>
+            <TabPanel className={style.tabContent} value={1}>
+              <Typography variant="h6" component="h1">
+                تصاویر نمونه کار
+              </Typography>
+              <FilePond
+                files={files}
+                server={{
+                  process: (file) =>
+                    new Promise((resolve, reject) => {
+                      // Process and return a promise that resolves with the server response
+                      // Here you can insert your API call or any logic needed to handle the file
+                      console.log("Processing file", file);
 
-              </div>
+                      resolve("server-file-id"); // Change this to your response ID
+                    }),
+                  revert: (uniqueFileId) =>
+                    new Promise((resolve, reject) => {
+                      // Handle file revert logic if needed
+                      console.log("Reverting file", uniqueFileId);
+                      resolve("");
+                    }),
+                  // Additional options can be added as needed
+                }}
+                allowMultiple={true}
+                onupdatefiles={setFiles}
+                acceptedFileTypes={["image/png", "image/jpeg"]}
+                maxFiles={1}
+                name="files"
+                labelIdle='<span class="filepond--label-action">لطفا تصویر خود را از این قسمت بارگذاری کنید </span>'
+              />
             </TabPanel>
-            <TabPanel value={3}>محدوده های ارائه خدمات</TabPanel>
+            <TabPanel className={style.tabContent} value={2}>
+              <Typography variant="h6" component="h1">
+                اطلاعات تماس
+              </Typography>
+              <FormGroup className={style.customFormGroup}>
+                <Typography component="label" htmlFor="mobile">
+                  شماره‌های فعال
+                </Typography>
+                <TextField id="mobile" disabled />
+                <Typography component="label" htmlFor="phone">
+                  تلفن ثابت
+                </Typography>
+                <TextField id="phone" disabled />
+                <Typography component="label" htmlFor="address">
+                  آدرس
+                </Typography>
+                <TextField id="address" disabled />
+              </FormGroup>
+            </TabPanel>
+            <TabPanel className={style.tabContent} value={3}>
+              <FormGroup className={style.customFormGroup}>
+                <Typography variant="h6" component="h1">
+                  محدوده های ارائه خدمات
+                </Typography>
+                <Typography component="label" htmlFor="provine">
+                  استان
+                </Typography>
+                <TextField id="provine" disabled value="استان" />
+                <Typography component="label" htmlFor="city">
+                  شهر
+                </Typography>
+                <TextField id="city" disabled value="کرج" />
+              </FormGroup>
+              <Box sx={{ margin:'10px' ,  display: "flex", flexDirection: "column" }}>
+                <FormControlLabel
+                  control={<Checkbox checked disabled />}
+                  label="کرج"
+                />
+                <FormControlLabel
+                  control={<Checkbox checked disabled />}
+                  label="اشتهارد"
+                />
+                <FormControlLabel
+                  control={<Checkbox checked disabled />}
+                  label="طالقان"
+                />
+                <FormControlLabel
+                  control={<Checkbox checked disabled />}
+                  label="فردیس"
+                />
+              </Box>
+            </TabPanel>
           </Tabs>
-        </div>
+        </Box>
       </Container>
       <BottomNav activeRoute={4} />
     </>

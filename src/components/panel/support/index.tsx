@@ -15,7 +15,7 @@ const Support = () => {
       <Container maxWidth="lg" className={style.wrapper}>
         <BreadCrumbs
           items={[
-            { title: "داشبورد", url: "/main" },
+            { title: "صفحه اصلی", url: "/main" },
             { title: "پشتیبانی", url: "/mian/support" },
           ]}
         />

@@ -1,0 +1,59 @@
+.wrapper {
+  padding-top: 80px;
+  padding-bottom: 65px;
+  height: 100%;
+}
+.mainLayout {
+  height: 100%;
+  padding-top: 10px;
+}
+.customTab {
+  display: flex;
+  :global {
+    button {
+      flex: 1;
+      padding: 10px;
+      box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.1);
+      background-color: #f7f7f7 !important;
+    }
+    button[aria-selected="true"] {
+      background-color: #fff !important;
+      font-size: 1.05rem;
+      font-weight: bold;
+      color: #1976D2;
+    }
+    :first-child {
+      border-bottom-right-radius: 12px;
+    }
+    :last-child {
+      border-bottom-left-radius: 12px;
+    }
+  }
+}
+.orderList {
+  color: #000;
+  :global {
+    h2 {
+      color: #000;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+    .orderListIcon {
+      min-width: 40px !important;
+    }
+  }
+}
+.btnGroup {
+  display: flex;
+  width: 100%;
+  :global {
+    button {
+      flex: 1;
+      padding: 8px;
+      font-size: 1rem;
+      a {
+        color: #1976D2;
+      }
+    }
+  }
+}

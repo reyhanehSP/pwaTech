@@ -9,14 +9,9 @@ import TopNavigation from "../common/TopNavigation";
 const Dashboard = () => {
   return (
     <>
-    <TopNavigation />
+      <TopNavigation />
       <Container maxWidth="lg" className={style.wrapper}>
-
-        <BreadCrumbs
-          items={[
-            { title: "داشبورد" , url : "/main"},
-          ]}
-        />
+        <BreadCrumbs items={[{ title: "صفحه اصلی", url: "/main" }]} />
       </Container>
 
       <BottomNav activeRoute={1} />

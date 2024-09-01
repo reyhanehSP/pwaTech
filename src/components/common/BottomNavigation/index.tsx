@@ -3,12 +3,12 @@ import React from "react";
 import style from "@/components/common/BottomNavigation/bottomNav.module.scss";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
-import DashboardIcon from "@mui/icons-material/Dashboard";
 import TocIcon from "@mui/icons-material/Toc";
 import CreditCardIcon from "@mui/icons-material/CreditCard";
 import SupportAgentIcon from "@mui/icons-material/SupportAgent";
 import { bottomNav } from "@/components/common/BottomNavigation/_types/type";
 import { useRouter } from "next/navigation";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 const BottomNav: React.FC<bottomNav> = ({ activeRoute }) => {
   const route = useRouter();
@@ -18,9 +18,9 @@ const BottomNav: React.FC<bottomNav> = ({ activeRoute }) => {
   const bottomNavList = [
     {
       id: 1,
-      label: "داشبورد",
-      url: "/main",
-      icon: <DashboardIcon />,
+      label: "پروفایل",
+      url: "/main/profile",
+      icon: <AccountCircleIcon />,
     },
     {
       id: 2,

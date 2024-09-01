@@ -1,5 +1,5 @@
 "use client";
-import { Container } from "@mui/material";
+import { Box, Container } from "@mui/material";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -27,12 +27,12 @@ const CostDetail = () => {
       <Container maxWidth="lg" className={style.wrapper}>
         <BreadCrumbs
           items={[
-            { title: "داشبورد", url: "/main" },
+            { title: "صفحه اصلی", url: "/main" },
             { title: "هزینه ها", url: "/mian/costs" },
             { title: "جزئیات هزینه", url: "/mian/costs/1" },
           ]}
         />
-        <div className={style.mainLayout}>
+        <Box className={style.mainLayout}>
           <div className={style.costDetailCard}>
             <h2>آقای کمالی</h2>
             <h2>کد سفارش</h2>
@@ -64,7 +64,7 @@ const CostDetail = () => {
               </TableBody>
             </Table>
           </TableContainer>
-        </div>
+        </Box>
       </Container>
       <BottomNav activeRoute={3} />
     </>

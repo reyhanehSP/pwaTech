@@ -1,7 +1,7 @@
 import { useRouter } from "next/navigation";
 import {useState} from "react"
 const useProfile = () => {
-     const [files, setFiles] = useState([]);
+     const [files, setFiles] = useState<any>();
 
        const router = useRouter();
        const handleSubmit = (value: string) => {

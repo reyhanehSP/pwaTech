@@ -19,7 +19,7 @@ const Costs = () => {
       <Container maxWidth="lg" className={style.wrapper}>
         <BreadCrumbs
           items={[
-            { title: "داشبورد", url: "/main" },
+            { title: "صفحه اصلی", url: "/main" },
             { title: "هزینه ها", url: "/mian/costs" },
           ]}
         />
