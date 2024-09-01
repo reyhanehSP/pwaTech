@@ -1,0 +1,132 @@
+/* entry.module.css */
+
+.container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background:linear-gradient(to top, #7569F4, #9187F6);
+}
+
+.wrapper {
+    height: 450px;
+    width: 100%;
+}
+
+.svgBackground {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.contentWrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /*justify-content: center;*/
+    /*align-items: center;*/
+}
+
+.contentText {
+    font-weight: 800;
+    font-size: 1rem;
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4rem;
+    background:linear-gradient(to top, #7569F4, #9187F6);
+    color: #FFFFFF;
+    padding: 1rem;
+    border-radius: 2rem;
+    height: fit-content;
+    border: 5px solid #FFFFFF;
+}
+
+.title {
+    padding-top: 1.5rem;
+    text-align: center;
+}
+
+.phoneNumberWrapper {
+    display: flex;
+    flex-direction: column;
+    row-gap: 4rem;
+    align-items: center;
+    width: 100%;
+}
+
+.phoneNumberWrapper > div:last-child {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    row-gap: 0.5rem;
+    z-index: 50;
+}
+
+.footer {
+    width: 90%;
+    margin-top: 2rem;
+
+}
+
+.changePhoneNumber {
+    color: #7569F4;
+}
+
+.verifyCodeWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-inline: 1rem;
+    row-gap: 2rem;
+}
+
+.inputs {
+    direction: ltr;
+    border-color: #7569F4;
+}
+
+
+.backIcon {
+    position: absolute;
+    left: 20px;
+    top: 25px;
+    z-index: 50;
+}
+
+.svgIcons {
+    position: absolute;
+    inset-inline: 0;
+    margin: auto;
+}
+
+@media screen and (max-device-height: 800px) {
+    .phoneNumberWrapper {
+        row-gap: 2rem;
+    }
+
+    .footer {
+        margin-top: 3rem;
+    }
+
+    .verifyCodeWrapper {
+        row-gap: 2rem;
+    }
+}
+
+@media screen and (min-width: 500px) {
+    .svgBackground {
+        height: 100%;
+    }
+}

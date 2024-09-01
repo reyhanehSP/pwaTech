@@ -1,0 +1,25 @@
+.inputSearch {
+    background-color: #fff;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    :global {
+        input {
+            width: 85%;
+            background-color: transparent;
+            border: none;
+            padding: 10px;
+        }
+        input:focus , input:focus-visible{
+            outline:  none !important;
+
+        }
+        .icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 15%;
+        }
+    }
+}

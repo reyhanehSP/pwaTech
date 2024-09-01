@@ -1,0 +1,24 @@
+.wrapper {
+  padding-top: 80px;
+  padding-bottom: 65px;
+  height: 100%;
+}
+.linkList {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 0;
+}
+.linkList :global {
+  a {
+   display: flex;
+    text-decoration: none;
+    align-items: center;
+    background-color: #fff;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #e1e1e1;
+    margin: 10px 0;
+    font-weight: bold;
+    color: black;
+  }
+}
