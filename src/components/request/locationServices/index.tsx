@@ -1,11 +1,13 @@
 "use client";
 
 import {
+  Box,
   FormControl,
   FormGroup,
   InputLabel,
   MenuItem,
   Select,
+  Typography,
  
 } from "@mui/material";
 import useLocation from "@/components/request/locationServices/_hooks/useLocation";
@@ -25,12 +27,12 @@ const LocationServices: React.FC<PropType> = ({
   } = useLocation();
 
   return (
-    <div className={style.content}>
-      <div className={style.paperTitle}>
-        <h1>محل ارائه خدمات</h1>
-      </div>
+    <Box className={style.content}>
+      <Box className={style.paperTitle}>
+        <Typography component="h1">محل ارائه خدمات</Typography>
+      </Box>
       <FormGroup>
-        <FormControl sx={{ m: 1, minWidth: 120 }} size="medium">
+        <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
           <InputLabel id="demo-select-small-label">استان</InputLabel>
           <Select
             onChange={(e) => handleChangeProvince(Number(e.target.value))}
@@ -46,7 +48,7 @@ const LocationServices: React.FC<PropType> = ({
             ))}
           </Select>
         </FormControl>
-        <FormControl sx={{ m: 1, minWidth: 120 }} size="medium">
+        <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
           <InputLabel id="demo-select-small-label">شهر</InputLabel>
           <Select
             value={selectedID}
@@ -61,7 +63,7 @@ const LocationServices: React.FC<PropType> = ({
             ))}
           </Select>
         </FormControl>
-        <div className={style.footer}>
+        <Box className={style.footer}>
           <button
             className={style.nextButton}
             type="submit"
@@ -69,7 +71,7 @@ const LocationServices: React.FC<PropType> = ({
           >
             مرحله بعد
           </button>
-        
+
           <button
             onClick={() => nextLevel({ type: "InformationExpert" })}
             className={
@@ -82,9 +84,9 @@ const LocationServices: React.FC<PropType> = ({
               height={15}
             />
           </button>
-        </div>
+        </Box>
       </FormGroup>
-    </div>
+    </Box>
   );
 };
 export default LocationServices;

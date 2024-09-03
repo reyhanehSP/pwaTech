@@ -45,12 +45,13 @@ body {
 button {
   border: none;
 }
-h1 {
-  font-size: 1.5rem;
-}
+
 ul {
   list-style-type: none;
 }
 a {
   text-decoration: none;
+}
+a:visited , a:hover {
+  color: blue;
 }

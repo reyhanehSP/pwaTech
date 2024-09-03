@@ -1,0 +1,37 @@
+.checkGroup {
+  padding: 0.5rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  :global {
+    .checkbox {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      counter-increment: total;
+    }
+  }
+}
+
+.checkbox__label {
+  margin-right: 0.6em;
+}
+.checkbox__icon {
+  width: 1.375em;
+  height: 1.375em;
+  flex-shrink: 0;
+  overflow: visible;
+}
+.checkboxTick {
+  stroke-dasharray: 20px;
+  stroke-dashoffset: 20px;
+  transition: stroke-dashoffset 0.2s ease-out;
+}
+.checkbox__input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+.checkbox__input:checked + .checkbox__icon .checkboxTick {
+  stroke-dashoffset: 0;
+}

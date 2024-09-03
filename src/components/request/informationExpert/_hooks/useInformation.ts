@@ -8,7 +8,7 @@ const useInformation = () => {
     lastName: "",
     nationalCode: 0,
     gender: 0,
-    activity : 0,
+    activity : null,
     activeCurState: null,
   };  
 

@@ -3,15 +3,6 @@
   padding-bottom: 65px;
   height: 100%;
 }
-.mapContainer {
-    margin: 15px 0 10px 0;
-    width: 100%;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 5px;
-    height: 180px;
-    overflow: hidden;
-}
 .customCard {
   background-color: aliceblue;
   border: 1px solid paleturquoise;
@@ -40,4 +31,7 @@
       margin: 12px 0 ;
     }
   }
+}
+.footer {
+  text-align: center;
 }

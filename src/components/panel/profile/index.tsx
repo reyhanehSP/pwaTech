@@ -3,11 +3,9 @@
 import {
   Box,
   Button,
-  Checkbox,
   Container,
   FormControlLabel,
   FormGroup,
-  Grid,
   TextField,
   Typography,
 } from "@mui/material";
@@ -15,15 +13,14 @@ import { Tabs } from "@mui/base/Tabs";
 import { TabsList } from "@mui/base/TabsList";
 import { TabPanel } from "@mui/base/TabPanel";
 import { Tab } from "@mui/base/Tab";
-
 import BottomNav from "@/components/common/BottomNavigation";
 import BreadCrumbs from "@/components/common/BreadCrumb";
 import style from "@/components/panel/profile/_styles/Profile.module.scss";
 import TopNavigation from "@/components/common/TopNavigation";
 import InputSearch from "@/components/common/InputSearch/InputSearch";
-
+import ColorButton from "@/components/common/AppButton/index";
 import { FilePond, registerPlugin } from "react-filepond";
-
+import CheckBox from "@/components/common/CheckBox"
 registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview);
 
 // Import FilePond styles
@@ -34,6 +31,7 @@ import FilePondPluginImagePreview from "filepond-plugin-image-preview";
 import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";
 
 import useProfile from "@/components/panel/profile/_hooks/useProfile";
+
 // Register the plugins
 registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview);
 const Profile = () => {
@@ -43,13 +41,7 @@ const Profile = () => {
     <>
       <TopNavigation />
       <Container maxWidth="lg" className={style.wrapper}>
-        <BreadCrumbs
-          items={[
-           
-            { title: "پروفایل", url: "/mian/profile" },
-          ]}
-        />
-
+        <BreadCrumbs items={[{ title: "پروفایل", url: "/mian/profile" }]} />
         <Box className={style.mainLayout}>
           <Tabs defaultValue={0}>
             <TabsList className={style.customTab}>
@@ -71,22 +63,21 @@ const Profile = () => {
                 درباره من
               </Typography>
 
-              <Typography component="p">قصد ارائه چه خدماتی دارید؟</Typography>
               <Typography component="p" className={style.tabInfo}>
-                <Typography>تعداد تخصص های انتخاب شده</Typography>
-                <Typography className={style.badgeInfo}>2</Typography>
+                <Typography component="span">
+                  تعداد تخصص های انتخاب شده
+                </Typography>
+                <Typography component="span" className={style.badgeInfo}>
+                  2
+                </Typography>
               </Typography>
+              <Typography component="p">قصد ارائه چه خدماتی دارید؟</Typography>
+
               <InputSearch />
               <FormGroup className={style.CustomForm}>
-                <FormControlLabel control={<Checkbox />} label=" تعمیر یخچال" />
-                <FormControlLabel
-                  control={<Checkbox />}
-                  label=" تعمیر لباسشویی"
-                />
-                <FormControlLabel
-                  control={<Checkbox />}
-                  label=" تعمیر ماکروفر"
-                />
+                <CheckBox label=" تعمیر یخچال" value={0} />
+                <CheckBox label="تعمیر لباسشویی" value={0} />
+                <CheckBox label="تعمیر ماکروفر" value={0} />
               </FormGroup>
               <Box className={style.footer}>
                 <Button
@@ -136,15 +127,16 @@ const Profile = () => {
                 <Typography component="label" htmlFor="mobile">
                   شماره‌های فعال
                 </Typography>
-                <TextField id="mobile" disabled />
+                <TextField id="mobile" />
                 <Typography component="label" htmlFor="phone">
                   تلفن ثابت
                 </Typography>
-                <TextField id="phone" disabled />
+                <TextField id="phone" />
                 <Typography component="label" htmlFor="address">
                   آدرس
                 </Typography>
-                <TextField id="address" disabled />
+                <TextField id="address" />
+                <ColorButton text="تایید" />
               </FormGroup>
             </TabPanel>
             <TabPanel className={style.tabContent} value={3}>
@@ -161,29 +153,23 @@ const Profile = () => {
                 </Typography>
                 <TextField id="city" disabled value="کرج" />
               </FormGroup>
-              <Box sx={{ margin:'10px' ,  display: "flex", flexDirection: "column" }}>
-                <FormControlLabel
-                  control={<Checkbox checked disabled />}
-                  label="کرج"
-                />
-                <FormControlLabel
-                  control={<Checkbox checked disabled />}
-                  label="اشتهارد"
-                />
-                <FormControlLabel
-                  control={<Checkbox checked disabled />}
-                  label="طالقان"
-                />
-                <FormControlLabel
-                  control={<Checkbox checked disabled />}
-                  label="فردیس"
-                />
+              <Box
+                sx={{
+                  margin: "10px",
+                  display: "flex",
+                  flexDirection: "column",
+                }}
+              >
+                <CheckBox value={1} label="کرج" />
+                <CheckBox value={2} label="اشتهارد" />
+                <CheckBox value={3} label="طالقان" />
+                <CheckBox value={3} label="فردیس" />
               </Box>
             </TabPanel>
           </Tabs>
         </Box>
       </Container>
-      <BottomNav activeRoute={4} />
+      <BottomNav activeRoute={1} />
     </>
   );
 };

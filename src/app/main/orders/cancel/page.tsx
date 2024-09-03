@@ -1,5 +1,5 @@
 import CancelOrder from "@/components/panel/orders/cancel/index";
 const CancelOrderPage = () => {
-  return <CancelOrder />;
+  return <CancelOrder />
 };
 export default CancelOrderPage;

@@ -1,30 +1,34 @@
 "use client";
 
 import {
-
+  Box,
   FormControl,
   FormControlLabel,
   FormLabel,
   Radio,
   RadioGroup,
   TextField,
+  Typography,
 } from "@mui/material";
 
 import style from "@/components/request/informationExpert/_styles/InformationExpert.module.scss";
 import useInformation from "@/components/request/informationExpert/_hooks/useInformation";
 import AppImage from "@/components/common/AppImage";
-import {PropType} from "@/components/request/informationExpert/_type/type"
+import { PropType } from "@/components/request/informationExpert/_type/type";
 
-const InformationExpert: React.FC<PropType>  = ({nextLevel, activeCurState}) => {
+const InformationExpert: React.FC<PropType> = ({
+  nextLevel,
+  activeCurState,
+}) => {
   const { state, dispatch } = useInformation();
-  
-  return (
-    <div className={style.content}>
-      <div className={style.paperTitle}>
-        <h1>اطلاعات کارشناس</h1>
-      </div>
 
-      <div className={style.wrapper}>
+  return (
+    <Box className={style.content}>
+      <Box className={style.paperTitle}>
+        <Typography component="h1">اطلاعات کارشناس</Typography>
+      </Box>
+
+      <Box className={style.wrapper}>
         <FormControl>
           <FormLabel className={style.formLabel}>اطلاعات شخصی</FormLabel>
           <TextField
@@ -69,12 +73,7 @@ const InformationExpert: React.FC<PropType>  = ({nextLevel, activeCurState}) => 
         </FormControl>
 
         <FormControl>
-          <FormLabel
-            id="demo-radio-buttons-group-label"
-            className={style.formLabel}
-          >
-            جنسیت
-          </FormLabel>
+          <FormLabel className={style.formLabel}>جنسیت</FormLabel>
           <RadioGroup
             value={state.gender}
             onChange={(e) =>
@@ -83,9 +82,7 @@ const InformationExpert: React.FC<PropType>  = ({nextLevel, activeCurState}) => 
                 payload: e.target.value,
               })
             }
-            aria-labelledby="demo-radio-buttons-group-label"
-            defaultValue="female"
-            name="radio-buttons-group"
+            
           >
             <FormControlLabel control={<Radio />} label="خانم" value={0} />
             <FormControlLabel control={<Radio />} label="آقا" value={1} />
@@ -93,40 +90,35 @@ const InformationExpert: React.FC<PropType>  = ({nextLevel, activeCurState}) => 
         </FormControl>
 
         <FormControl>
-          <FormLabel
-            id="demo-radio-buttons-group-label"
-            className={style.formLabel}
-          >
+          <FormLabel className={style.formLabel}>
             نوع فعالیت خود را انتخاب کنید
           </FormLabel>
-          <div className="flex">
+          <Box className="flex">
             <RadioGroup
-              value={state.gender}
+              value={state.activity}
               onChange={(e) =>
                 dispatch({
                   type: "handleActivityChange",
-                  payload: e.target.checked,
+                  payload: e.target.value,
                 })
               }
-              aria-labelledby="demo-radio-buttons-group-label"
-              defaultValue="female"
-              name="radio-buttons-group"
+            
             >
               <FormControlLabel
-                value={0}
+                value={2}
                 control={<Radio />}
                 label="شخصی کار میکنم"
               />
               <FormControlLabel
-                value={1}
+                value={3}
                 control={<Radio />}
                 label="واحد صنفی، مغازه و ... دارم"
               />
             </RadioGroup>
-          </div>
+          </Box>
         </FormControl>
 
-        <div className={style.footer}>
+        <Box className={style.footer}>
           <button
             className={style.nextButton}
             type="submit"
@@ -151,9 +143,9 @@ const InformationExpert: React.FC<PropType>  = ({nextLevel, activeCurState}) => 
               height={15}
             />
           </button>
-        </div>
-      </div>
-    </div>
+        </Box>
+      </Box>
+    </Box>
   );
 };
 export default InformationExpert;

@@ -1,11 +1,18 @@
 .content {
 width: 85%;
   height: 100%;
-  padding: 6rem 0;
+  padding: 4.5rem 0;
    .paperTitle {
-        text-align: center;
-        line-height: 2.5rem;
-        margin-bottom: 20px;
+      :global {
+      h1 {
+        font-weight: bold;
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+      }
+    }
+    text-align: center;
+    line-height: 2.5rem;
+    margin-bottom: 20px;
     
       }
 }
@@ -19,17 +26,17 @@ width: 85%;
 }
 .footer {
   position: fixed;
-  bottom: 1rem;
+  bottom: 1.5rem;
   inset-inline: 0;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-evenly;
   padding: 1rem;
   z-index: 1000;
 }
 
 .nextButton {
-  width: 80%;
+  width: 75%;
   display: flex;
   justify-content: center;
   align-items: center;

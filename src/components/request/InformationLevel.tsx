@@ -5,6 +5,7 @@ import InformationExpert from "@/components/request/informationExpert";
 import LocationServices from "@/components/request/locationServices";
 import style from '@/components/request/_styles/styles.module.scss'
 import Progress from '@/components/common/Progress/index'
+import { Box } from "@mui/material";
 const InformationLevel = () => {
   const initialState = {
     skills: [],
@@ -40,28 +41,29 @@ const InformationLevel = () => {
     initialState
   );
   return (
-    <div className={style.layout}>
-      <Progress index={activeCurState} />
-      {status === "level1" && (
-        <ChoosingSpeciality
-          nextLevel={dispatch}
-          activeCurState={activeCurState}
-        />
-      )}
-      {status === "level2" && (
-        <InformationExpert
-          nextLevel={dispatch}
-          activeCurState={activeCurState}
-        />
-      )}
-      {status === "level3" && (
-        <LocationServices
-          nextLevel={dispatch}
-          activeCurState={activeCurState}
-        />
-      )}
-    
-    </div>
+    <Box className={style.layout}>
+      <Box className={style.layoutBody}>
+        <Progress index={activeCurState} />
+        {status === "level1" && (
+          <ChoosingSpeciality
+            nextLevel={dispatch}
+            activeCurState={activeCurState}
+          />
+        )}
+        {status === "level2" && (
+          <InformationExpert
+            nextLevel={dispatch}
+            activeCurState={activeCurState}
+          />
+        )}
+        {status === "level3" && (
+          <LocationServices
+            nextLevel={dispatch}
+            activeCurState={activeCurState}
+          />
+        )}
+      </Box>
+    </Box>
   );
 };
 export default InformationLevel;

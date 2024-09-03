@@ -41,7 +41,7 @@ const BottomNav: React.FC<bottomNav> = ({ activeRoute }) => {
       icon: <SupportAgentIcon />,
     },
   ];
-
+  console.log(activeRoute);
   return (
     <BottomNavigation className={style.bottomNavigation} showLabels>
       {bottomNavList.map((item: any) => (

@@ -33,11 +33,11 @@ const CostDetail = () => {
           ]}
         />
         <Box className={style.mainLayout}>
-          <div className={style.costDetailCard}>
+          <Box className={style.costDetailCard}>
             <h2>آقای کمالی</h2>
             <h2>کد سفارش</h2>
             <p> کرج حصار- تعمیر ماشین لباسشویی</p>
-          </div>
+          </Box>
 
           <TableContainer component={Paper} className={style.table}>
             <Table sx={{ minWidth: 100 }} aria-label="simple table">

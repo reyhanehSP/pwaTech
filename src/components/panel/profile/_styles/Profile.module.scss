@@ -30,12 +30,14 @@
   }
 }
 .tabContent {
-  font-weight: 700;
   :global {
     h1 {
       padding: 10px 0;
       text-align: center;
       font-weight: 700;
+    }
+    p {
+      margin-bottom: 10px;
     }
   }
 }
@@ -43,7 +45,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 0;
 }
 .badgeInfo {
   display: flex;
@@ -64,6 +65,8 @@
   margin: 10px 0;
   padding: 10px;
   max-height: 215px;
+  display: flex;
+  justify-self: start;
   overflow-y: auto;
 }
 .footer {
@@ -72,7 +75,6 @@
 .customFormGroup {
   :global {
     label {
-      font-weight: 600;
       margin: 12px 0 ;
     }
   }

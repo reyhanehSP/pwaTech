@@ -2,8 +2,23 @@
   padding-top: 80px;
   padding-bottom: 65px;
   height: 100%;
+  :global {
+    h2 {
+      font-weight: 700;
+      text-align: center;
+      margin: 10px 0;
+    }
+    textarea {
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+  }
 }
 .mainLayout {
   height: 100%;
   padding-top: 10px;
+}
+.footer {
+  text-align: center;
 }

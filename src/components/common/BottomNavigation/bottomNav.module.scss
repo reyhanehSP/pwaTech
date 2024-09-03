@@ -1,13 +1,8 @@
-$primary: #3d4977 !important;
-$purple: #5b37b7;
-$pink: #c9379d;
-$ocher: #e6a919;
-$cyan: #1194aa;
-$transition: 0.3s ease;
+@import "@/theme/colorTheme.scss"; 
 
 .bottomNavigation {
-  background-image: linear-gradient(to top, #7569F4, #9187F6);
-    box-shadow: 0 4px 16px rgba(118, 106, 244, 0.2392156863);
+  background: linear-gradient(to top, $background_base_1, $background_base_2);
+  box-shadow: 2px 19px 15px 20px rgba(118, 106, 244, 0.2392156863);
   width: 100%;
   position: fixed;
   left: 0;
@@ -33,10 +28,9 @@ $transition: 0.3s ease;
       svg {
         font-size: 1.9rem !important;
       }
-font-size: 1.5rem;
-      ~ .active {
-        transform: all .3ms ease;
-        
+        font-size: 1.5rem;
+      &.active {
+        transform: all .3ms ease;  
         background-color: white !important;
         color: $primary;
         svg {
