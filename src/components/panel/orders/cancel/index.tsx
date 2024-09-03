@@ -6,6 +6,7 @@ import { Box, Button, Checkbox, Container, FormControlLabel, TextField, Typograp
  from "@mui/material";
  import { TextareaAutosize } from "@mui/base/TextareaAutosize";
 import style from "@/components/panel/orders/cancel/_styles/CancelOrder.module.scss";
+import AppButtonNew from "@/components/common/AppButtonNew";
 const CancelOrder = () => (
   <>
     <TopNavigation />
@@ -39,9 +40,9 @@ const CancelOrder = () => (
         <TextareaAutosize placeholder="توضیحات" minRows="5" />
       </Box>
       <Box className={style.footer}>
-        <Button className={style.customButton}  variant="contained">
-          تایید
-        </Button>
+        <Box className="button-align">
+          <AppButtonNew text="تایید" color="#fcc056" />
+        </Box>
       </Box>
     </Container>
 

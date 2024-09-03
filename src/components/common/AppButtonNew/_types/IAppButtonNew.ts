@@ -1,8 +1,8 @@
 export interface IAppButtonNew {
-    iconUrl: string,
-    disabled: boolean,
-    text: string,
-    onClick?: () => void
-
+  iconUrl?: string;
+  disabled?: boolean;
+  text?: string;
+  color?: string;
+  onClick?: () => void;
 }
 

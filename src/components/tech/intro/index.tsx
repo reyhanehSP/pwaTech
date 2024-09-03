@@ -17,7 +17,7 @@ const Intro = () => {
         <div
             className={style.container}
         >
-            <button className={style.skipButton} onClick={() => router.push('/users/entry')}>رد شدن</button>
+            <button className={style.skipButton} onClick={() => router.push('/tech/entry')}>رد شدن</button>
             <Swiper
                 style={{
                     direction: 'ltr',

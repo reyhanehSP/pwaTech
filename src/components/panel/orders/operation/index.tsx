@@ -4,6 +4,7 @@ import BreadCrumbs from "@/components/common/BreadCrumb";
 import { Box, Button, Container, FormGroup, TextField, Typography } from "@mui/material";
 import TopNavigation from "@/components/common/TopNavigation";
 import style from "@/components/panel/orders/operation/_styles/Operation.module.scss";
+import AppButtonNew from "@/components/common/AppButtonNew";
 
 const OperationOrder = () => {
   return (
@@ -44,12 +45,9 @@ const OperationOrder = () => {
             <TextField id="address" value="5 روز " />
           </FormGroup>
           <Box className={style.footer}>
-            <Button
-              className={style.customButton}
-              variant="contained"
-            >
-              تایید
-            </Button>
+            <Box className="button-align">
+              <AppButtonNew text="تایید" color="#fcc056" />
+            </Box>
           </Box>
         </Box>
       </Container>

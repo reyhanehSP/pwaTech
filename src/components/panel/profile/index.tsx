@@ -31,6 +31,7 @@ import FilePondPluginImagePreview from "filepond-plugin-image-preview";
 import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";
 
 import useProfile from "@/components/panel/profile/_hooks/useProfile";
+import AppButtonNew from "@/components/common/AppButtonNew";
 
 // Register the plugins
 registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview);
@@ -80,13 +81,9 @@ const Profile = () => {
                 <CheckBox label="تعمیر ماکروفر" value={0} />
               </FormGroup>
               <Box className={style.footer}>
-                <Button
-                  className={style.customButton}
-                  variant="contained"
-                  onClick={() => handleSubmit("register")}
-                >
-                  تایید
-                </Button>
+                <Box className="button-align">
+                  <AppButtonNew text="تایید" color="#fcc056" />
+                </Box>
               </Box>
             </TabPanel>
             <TabPanel className={style.tabContent} value={1}>
@@ -120,13 +117,9 @@ const Profile = () => {
                 labelIdle='<span class="filepond--label-action">لطفا تصویر خود را از این قسمت بارگذاری کنید </span>'
               />
               <Box className={style.footer}>
-                <Button
-                  className={style.customButton}
-                  variant="contained"
-                  onClick={() => handleSubmit("register")}
-                >
-                  تایید
-                </Button>
+                <Box className="button-align">
+                  <AppButtonNew text="تایید" color="#fcc056" />
+                </Box>
               </Box>
             </TabPanel>
             <TabPanel className={style.tabContent} value={2}>
@@ -147,13 +140,9 @@ const Profile = () => {
                 </Typography>
                 <TextField id="address" />
                 <Box className={style.footer}>
-                  <Button
-                    className={style.customButton}
-                    variant="contained"
-                    onClick={() => handleSubmit("register")}
-                  >
-                    تایید
-                  </Button>
+                  <Box className="button-align">
+                    <AppButtonNew text="تایید" color="#fcc056" />
+                  </Box>
                 </Box>
               </FormGroup>
             </TabPanel>
@@ -180,15 +169,11 @@ const Profile = () => {
               >
                 <CheckBox value={1} label="کرج" />
                 <CheckBox value={2} label="اشتهارد" />
-               
               </Box>
               <Box className={style.footer}>
-                <Button
-                  className={style.customButton}
-                  variant="contained"
-                >
-                  تایید
-                </Button>
+                <Box className="button-align">
+                  <AppButtonNew text="تایید" color="#fcc056" />
+                </Box>
               </Box>
             </TabPanel>
           </Tabs>

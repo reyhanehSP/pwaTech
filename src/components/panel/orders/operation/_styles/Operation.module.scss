@@ -33,13 +33,18 @@
   }
 }
 .footer {
+  display: flex;
+  justify-content: center;
   text-align: center;
   position: fixed;
   right: 0;
   left: 0;
-  bottom: 5rem;
-}
-.customButton {
-  background-color: #fcc056 !important;
-  font-size: 1.04rem !important;
+  width: 100%;
+  bottom: 4.7rem;
+  :global {
+    .button-align {
+      text-align: center;
+      width: 90%;
+    }
+  }
 }
