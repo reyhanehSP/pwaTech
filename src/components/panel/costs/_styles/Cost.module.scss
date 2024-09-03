@@ -1,11 +1,19 @@
 .wrapper {
-  padding-top: 80px;
+  padding-top: 75px;
   padding-bottom: 80px;
   height: 100%;
 }
 .mainLayout {
   height: 100%;
   padding-top: 10px;
+  :global {
+    .valid {
+  background-color: #fff;
+}
+.invalid {
+  background-color: #ffeded;
+}
+  }
 }
 .title {
   color: rgb(0 0 0);
@@ -13,7 +21,6 @@
   margin-bottom: 10px;
 }
 .expenseCard {
-  background-color: #fff;
   padding: 10px;
   border: 1px solid #ccc;
   display: block;
@@ -36,3 +43,14 @@
   }
 }
 
+.footer {
+  text-align: center;
+  position: fixed;
+  right: 0;
+  left: 0;
+  bottom: 5.5rem;
+}
+.customButton {
+  background-color: #fcc056 !important;
+  font-size: 1.04rem !important;
+}

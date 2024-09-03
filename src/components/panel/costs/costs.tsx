@@ -1,6 +1,5 @@
 "use client";
 import {Container} from "@mui/material";
-import { useRouter } from "next/navigation";
 import style from "@/components/panel/costs/_styles/Cost.module.scss";
 import Link from "next/link";
 import BottomNav from "@/components/common/BottomNavigation";
@@ -8,21 +7,11 @@ import TopNavigation from "@/components/common/TopNavigation";
 import BreadCrumbs from "@/components/common/BreadCrumb";
 import InputSearch from "@/components/common/InputSearch/InputSearch";
 const Costs = () => {
-  const router = useRouter();
-
-  const handleSubmit = () => {
-    router.push("/register/verification");
-  };
   return (
     <>
       <TopNavigation />
       <Container maxWidth="lg" className={style.wrapper}>
-        <BreadCrumbs
-          items={[
-            { title: "صفحه اصلی", url: "/main" },
-            { title: "هزینه ها", url: "/mian/costs" },
-          ]}
-        />
+        <BreadCrumbs items={[{ title: "هزینه ها", url: "/mian/costs" }]} />
 
         <div className={style.mainLayout}>
           <p className={style.title}>
@@ -31,8 +20,12 @@ const Costs = () => {
 
           <InputSearch />
 
-          <Link className={style.expenseCard} href={`/main/costs/1`}>
+          <Link className={`valid ${style.expenseCard}`} href={`/main/costs/1`}>
             <ul>
+              <li>
+                <span>جمع کل</span>
+                <span>1450 ریال</span>
+              </li>
               <li>
                 <span>کد سفارش :</span>
                 <span>123</span>
@@ -46,8 +39,15 @@ const Costs = () => {
               </li>
             </ul>
           </Link>
-          <Link className={style.expenseCard} href={`/main/costs/1`}>
+          <Link
+            className={`invalid ${style.expenseCard}`}
+            href={`/main/costs/1`}
+          >
             <ul>
+              <li>
+                <span>جمع کل</span>
+                <span style={{color: "red"}}>مشخص نشده است</span>
+              </li>
               <li>
                 <span>کد سفارش :</span>
                 <span>123</span>

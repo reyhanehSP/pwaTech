@@ -12,7 +12,6 @@ const CancelOrder = () => (
     <Container maxWidth="lg" className={style.wrapper}>
       <BreadCrumbs
         items={[
-          { title: "صفحه اصلی", url: "/main" },
           { title: "سفارش‌ها", url: "/main/orders" },
           { title: "لغو سفارش", url: "/main/orders/cancel" },
         ]}
@@ -36,11 +35,13 @@ const CancelOrder = () => (
           label="دستگاه توسط تعمیرکار باز شده بود"
         />
         <FormControlLabel control={<Checkbox checked />} label="سایر" />
-       
+
         <TextareaAutosize placeholder="توضیحات" minRows="5" />
       </Box>
       <Box className={style.footer}>
-        <Button variant="contained">تایید</Button>
+        <Button className={style.customButton}  variant="contained">
+          تایید
+        </Button>
       </Box>
     </Container>
 

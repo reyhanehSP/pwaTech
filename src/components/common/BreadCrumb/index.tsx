@@ -4,9 +4,11 @@ import { emphasize, styled } from "@mui/material/styles";
 import Breadcrumbs from "@mui/material/Breadcrumbs";
 import Chip from "@mui/material/Chip";
 import style from "@/components/common/BreadCrumb/BreadCrumbs.module.scss"
-
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { BreadCrumbType } from "@/components/common/BreadCrumb/_types/type";
+import { useRouter } from "next/navigation";
 const StyledBreadcrumb = styled(Chip)(({ theme }) => {
+
   const backgroundColor =
     theme.palette.mode === "light"
       ? theme.palette.grey[100]
@@ -32,9 +34,11 @@ function handleClick(event: React.MouseEvent<Element, MouseEvent>) {
 }
 
 const BreadCrumbs: React.FC<BreadCrumbType> = ({ items }) => {
+ const router = useRouter();
+
   return (
-    <div role="presentation" onClick={handleClick}>
-      <Breadcrumbs aria-label="breadcrumb" className={style.braedcrumbs}>
+    <div role="presentation" className={style.layout} onClick={handleClick}>
+      <Breadcrumbs aria-label="breadcrumb">
         {items.map((item: any, index: number) => (
           <StyledBreadcrumb
             key={index}
@@ -44,6 +48,13 @@ const BreadCrumbs: React.FC<BreadCrumbType> = ({ items }) => {
           />
         ))}
       </Breadcrumbs>
+      <button
+        className={style.backBtn}
+        aria-label="back"
+        onClick={() => router.back()}
+      >
+        <ArrowBackIcon />
+      </button>
     </div>
   );
 };

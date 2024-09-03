@@ -41,6 +41,7 @@ const ChoosingSpeciality: React.FC<PropType> = ({ nextLevel }) => {
             specialities &&
             specialities.map((item: any) => (
               <CheckBox
+              key ={item.ID}
                 value={item.skillDesc}
                 label={item.skillDesc}
                 onChange={(e: any) =>

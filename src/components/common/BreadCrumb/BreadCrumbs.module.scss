@@ -1,4 +1,19 @@
-.braedcrumbs {
-    border-bottom: 1px solid #eee;
-    padding-bottom: 8px;
+
+.layout {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 8px;
+}
+
+.backBtn {
+  background-color: #f7c367;
+  color: white;
+  border-radius: 8px;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

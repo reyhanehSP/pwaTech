@@ -12,7 +12,6 @@ const OrderDetail = () => {
       <Container maxWidth="lg" className={style.wrapper}>
         <BreadCrumbs
           items={[
-            { title: "صفحه اصلی", url: "/main" },
             { title: "سفارش‌ها", url: "/main/oreder/detail" },
             { title: "جزئیات سفارش", url: "/main/oreder/detail" },
           ]}

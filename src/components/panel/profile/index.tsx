@@ -81,6 +81,7 @@ const Profile = () => {
               </FormGroup>
               <Box className={style.footer}>
                 <Button
+                  className={style.customButton}
                   variant="contained"
                   onClick={() => handleSubmit("register")}
                 >
@@ -118,6 +119,15 @@ const Profile = () => {
                 name="files"
                 labelIdle='<span class="filepond--label-action">لطفا تصویر خود را از این قسمت بارگذاری کنید </span>'
               />
+              <Box className={style.footer}>
+                <Button
+                  className={style.customButton}
+                  variant="contained"
+                  onClick={() => handleSubmit("register")}
+                >
+                  تایید
+                </Button>
+              </Box>
             </TabPanel>
             <TabPanel className={style.tabContent} value={2}>
               <Typography variant="h6" component="h1">
@@ -136,7 +146,15 @@ const Profile = () => {
                   آدرس
                 </Typography>
                 <TextField id="address" />
-                <ColorButton text="تایید" />
+                <Box className={style.footer}>
+                  <Button
+                    className={style.customButton}
+                    variant="contained"
+                    onClick={() => handleSubmit("register")}
+                  >
+                    تایید
+                  </Button>
+                </Box>
               </FormGroup>
             </TabPanel>
             <TabPanel className={style.tabContent} value={3}>
@@ -147,11 +165,11 @@ const Profile = () => {
                 <Typography component="label" htmlFor="provine">
                   استان
                 </Typography>
-                <TextField id="provine" disabled value="استان" />
+                <TextField id="provine" value="استان" />
                 <Typography component="label" htmlFor="city">
                   شهر
                 </Typography>
-                <TextField id="city" disabled value="کرج" />
+                <TextField id="city" value="کرج" />
               </FormGroup>
               <Box
                 sx={{
@@ -162,8 +180,15 @@ const Profile = () => {
               >
                 <CheckBox value={1} label="کرج" />
                 <CheckBox value={2} label="اشتهارد" />
-                <CheckBox value={3} label="طالقان" />
-                <CheckBox value={3} label="فردیس" />
+               
+              </Box>
+              <Box className={style.footer}>
+                <Button
+                  className={style.customButton}
+                  variant="contained"
+                >
+                  تایید
+                </Button>
               </Box>
             </TabPanel>
           </Tabs>

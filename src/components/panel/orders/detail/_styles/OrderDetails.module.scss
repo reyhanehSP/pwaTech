@@ -1,5 +1,5 @@
 .wrapper {
-  padding-top: 80px;
+  padding-top: 75px;
   padding-bottom: 65px;
   height: 100%;
 }
@@ -40,4 +40,15 @@
       margin: 12px 0 ;
     }
   }
+}
+.footer {
+  text-align: center;
+  position: fixed;
+  right: 0;
+  left: 0;
+  bottom: 5rem;
+}
+.customButton {
+  background-color: #fcc056 !important;
+  font-size: 1.04rem !important;
 }

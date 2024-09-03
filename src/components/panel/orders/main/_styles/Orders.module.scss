@@ -1,12 +1,13 @@
 .wrapper {
-  padding-top: 80px;
+  padding-top: 75px;
   padding-bottom: 65px;
   height: 100%;
-  
 }
 .mainLayout {
   height: 100%;
+  max-height: 100%;
   padding-top: 10px;
+  overflow-y: auto;
 }
 .customTab {
   display: flex;
@@ -21,7 +22,7 @@
       background-color: #fff !important;
       font-size: 1.05rem;
       font-weight: bold;
-      color: #1976D2;
+      color: #1976d2;
     }
     :first-child {
       border-bottom-right-radius: 12px;
@@ -40,10 +41,11 @@
       font-size: 1.1rem;
     }
     .orderListIcon {
-      min-width: 40px !important;
+      min-width: 35px !important;
     }
   }
 }
+
 .btnGroup {
   display: flex;
   width: 100%;
@@ -53,8 +55,38 @@
       padding: 8px;
       font-size: 1rem;
       a {
-        color: #1976D2;
+        color: #1976d2;
       }
     }
+  }
+}
+.footer {
+  text-align: center;
+  position: fixed;
+  right: 0;
+  left: 0;
+  bottom: 5rem;
+}
+.customButton {
+  background-color: #fcc056 !important;
+  font-size: 1.04rem !important;
+}
+.table {
+  margin-top: 10px;
+  :global {
+    thead {
+      border: 1px solid #ccc;
+      th {
+        font-weight: bold;
+        font-size: 1.1rem;
+        background-color: lavender;
+        text-align: center;
+      }
+      
+    }
+    td {
+        font-size: 1rem;
+        text-align: center;
+      }
   }
 }

@@ -12,7 +12,6 @@ const OperationOrder = () => {
       <Container maxWidth="lg" className={style.wrapper}>
         <BreadCrumbs
           items={[
-            { title: "صفحه اصلی", url: "/main" },
             { title: "سفارش‌ها", url: "/main/oreder/detail" },
             { title: "جزئیات سفارش", url: "/main/oreder/detail" },
           ]}
@@ -44,7 +43,14 @@ const OperationOrder = () => {
             </Typography>
             <TextField id="address" value="5 روز " />
           </FormGroup>
-          <Button variant="contained">تایید</Button>
+          <Box className={style.footer}>
+            <Button
+              className={style.customButton}
+              variant="contained"
+            >
+              تایید
+            </Button>
+          </Box>
         </Box>
       </Container>
       <BottomNav activeRoute={1} />

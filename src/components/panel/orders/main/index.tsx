@@ -22,26 +22,37 @@ import { Tabs } from "@mui/base/Tabs";
 import { TabsList } from "@mui/base/TabsList";
 import { TabPanel } from "@mui/base/TabPanel";
 import { Tab } from "@mui/base/Tab";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
 import PlaceOutlinedIcon from "@mui/icons-material/PlaceOutlined";
 import Link from "next/link";
+import Paper from "@mui/material/Paper";
+
+function createData(type: string, desc: string, price: string) {
+  return { type, desc, price };
+}
+const rows = [
+  createData("قطعه", "برد", "5000 ریال"),
+  createData("قطعه", "موتور", "8500 ریال"),
+  createData("قطعه", "برد", "582400 ریال"),
+];
 const Order = () => {
   return (
     <>
       <TopNavigation />
       <Container maxWidth="lg" className={style.wrapper}>
-        <BreadCrumbs
-          items={[
-            { title: "صفحه اصلی", url: "/main" },
-            { title: "سفارشات", url: "/mian/orders" },
-          ]}
-        />
+        <BreadCrumbs items={[{ title: "سفارشات", url: "/mian/orders" }]} />
         <Tabs defaultValue={0}>
           <TabsList className={style.customTab}>
             <Tab value={0} className="mx-1">
               سفارش‌ها
             </Tab>
             <Tab value={1} className="mx-1">
-              کارهای انجام شده
+              انجام شده
             </Tab>
             <Tab value={2} className="mx-1">
               لغو شده
@@ -57,8 +68,8 @@ const Order = () => {
                       تعمیر ماشین لباسشویی
                     </ListSubheader>
                     <ListItem disablePadding>
-                      <ListItemButton className={style.orderListIcon}>
-                        <ListItemIcon>
+                      <ListItemButton>
+                        <ListItemIcon className="orderListIcon">
                           <AccessAlarmIcon />
                         </ListItemIcon>
                         <ListItemText primary="سه شنبه 25 شهریور 12:45" />
@@ -67,7 +78,7 @@ const Order = () => {
 
                     <ListItem disablePadding>
                       <ListItemButton>
-                        <ListItemIcon>
+                        <ListItemIcon className="orderListIcon">
                           <PlaceOutlinedIcon />
                         </ListItemIcon>
                         <ListItemText primary="البرز، کرج" />
@@ -75,7 +86,7 @@ const Order = () => {
                     </ListItem>
                     <ListItem disablePadding>
                       <ListItemButton>
-                        <ListItemIcon>
+                        <ListItemIcon className="orderListIcon">
                           <PlaceOutlinedIcon />
                         </ListItemIcon>
                         <ListItemText primary="مشخصات مشتری : آقای کمالی" />
@@ -97,8 +108,60 @@ const Order = () => {
               </Card>
             </Box>
           </TabPanel>
-          <TabPanel value={1}>sdfbvdf</TabPanel>
-          <TabPanel value={2}>mnjknjk</TabPanel>
+          <TabPanel value={1}>
+            <TableContainer component={Paper} className={style.table}>
+              <Table sx={{ minWidth: 100 }} aria-label="simple table">
+                <TableHead>
+                  <TableRow>
+                    <TableCell component="th">ردیف</TableCell>
+                    <TableCell component="th">نوع هزینه</TableCell>
+                    <TableCell component="th">شرح</TableCell>
+                    <TableCell component="th">مبلغ</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {rows.map((row, index) => (
+                    <TableRow
+                      key={row.type}
+                      sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                    >
+                      <TableCell>{index + 1}</TableCell>
+                      <TableCell scope="row">{row.type}</TableCell>
+                      <TableCell>{row.desc}</TableCell>
+                      <TableCell>{row.price}</TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
+          </TabPanel>
+          <TabPanel value={2}>
+            <TableContainer component={Paper} className={style.table}>
+              <Table sx={{ minWidth: 100 }} aria-label="simple table">
+                <TableHead>
+                  <TableRow>
+                    <TableCell component="th">ردیف</TableCell>
+                    <TableCell component="th">نوع هزینه</TableCell>
+                    <TableCell component="th">شرح</TableCell>
+                    <TableCell component="th">مبلغ</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {rows.map((row, index) => (
+                    <TableRow
+                      key={row.type}
+                      sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                    >
+                      <TableCell>{index + 1}</TableCell>
+                      <TableCell scope="row">{row.type}</TableCell>
+                      <TableCell>{row.desc}</TableCell>
+                      <TableCell>{row.price}</TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
+          </TabPanel>
         </Tabs>
       </Container>
       <BottomNav activeRoute={2} />

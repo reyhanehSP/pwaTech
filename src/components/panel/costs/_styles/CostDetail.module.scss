@@ -1,6 +1,5 @@
-
 .wrapper {
-  padding-top: 80px;
+  padding-top: 75px;
   padding-bottom: 65px;
   height: 100%;
 }
@@ -16,11 +15,24 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: start;
   gap: 10px;
   padding: 10px;
+  :global {
+    .flex_base {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}
+
+.AddForm {
+  display: flex;
+  gap: 10px;
 }
 .table {
+  margin-top: 10px;
   :global {
     thead {
       border: 1px solid #ccc;
@@ -30,11 +42,27 @@
         background-color: lavender;
         text-align: center;
       }
-      
     }
     td {
-        font-size: 1rem;
-        text-align: center;
-      }
+      font-size: 1rem;
+      text-align: center;
+    }
   }
+}
+.footer {
+  margin-top: 10px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.customButton {
+  background-color: #fcc056 !important;
+  font-size: 1.04rem !important;
+  margin: 5px !important;
+}
+.addButton {
+  background-color: #50c787 !important;
+  font-size: 1.04rem !important;
+  margin: 5px !important;
 }
