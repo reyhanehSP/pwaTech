@@ -6,11 +6,25 @@
     margin: 0;
 }
 
+.backgroundAnimation {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background-image: url('/assets/images/splash_bg.svg'); /* Replace with your image path */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    animation: expand 1300ms forwards; /* Animation duration and forwards to keep the state at the end */
+}
 .logo {
     border: 1px solid #EC8536;
     background-color: #FDF6E9;
-    width: 300px;
-    height: 300px;
+    width: 270px;
+    height: 270px;
     border-radius: 50%;
 
 }
@@ -22,4 +36,15 @@
     transform: translate(-50%, -50%);
     text-align: center;
     z-index: 50;
+}
+
+@keyframes expand {
+    0% {
+        width: 0;
+        height: 0;
+    }
+    100% {
+        width: 100vw; /* Full viewport width */
+        height: 100vh; /* Full viewport height */
+    }
 }

@@ -14,7 +14,7 @@ const OperationOrder = () => {
         <BreadCrumbs
           items={[
             { title: "سفارش‌ها", url: "/main/oreder/detail" },
-            { title: "جزئیات سفارش", url: "/main/oreder/detail" },
+            { title: "عملیات سفارش", url: "/main/oreder/detail" },
           ]}
         />
         <Box className={style.mainLayout}>
@@ -51,7 +51,7 @@ const OperationOrder = () => {
           </Box>
         </Box>
       </Container>
-      <BottomNav activeRoute={1} />
+      <BottomNav activeRoute={2} />
     </>
   );
 };

@@ -29,10 +29,13 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import CloseIcon from "@mui/icons-material/Close";
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
+
 function createData(type: string, desc: string, price: string) {
   return { type, desc, price };
 }
-const rows = [createData("قطعه", "برد", "5000 ریال")];
+const rows = [createData("قطعه", "برد", "5000 ریال" )];
 const CostDetail = () => {
   const [open, setOpen] = useState(false);
 
@@ -126,6 +129,8 @@ const CostDetail = () => {
                   <TableCell component="th">نوع هزینه</TableCell>
                   <TableCell component="th">شرح</TableCell>
                   <TableCell component="th">مبلغ</TableCell>
+                  <TableCell component="th">ویرایش</TableCell>
+                  <TableCell component="th">حذف</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -138,6 +143,8 @@ const CostDetail = () => {
                     <TableCell scope="row">{row.type}</TableCell>
                     <TableCell>{row.desc}</TableCell>
                     <TableCell>{row.price}</TableCell>
+                    <TableCell><IconButton><EditIcon /></IconButton></TableCell>
+                    <TableCell><IconButton ><DeleteIcon /></IconButton></TableCell>
                   </TableRow>
                 ))}
               </TableBody>

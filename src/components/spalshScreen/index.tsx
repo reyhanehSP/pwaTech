@@ -14,6 +14,8 @@ const SplashScreen = ({children}:{children:React.ReactNode}) => {
     return (
         <>
             {isLoading ?
+            <>
+        <div className={styles.backgroundAnimation}></div>
 
                 <div className={styles.logoWrapper}>
                     <motion.div
@@ -70,11 +72,12 @@ const SplashScreen = ({children}:{children:React.ReactNode}) => {
                         </div>
                     </motion.div>
                 </div>
+                </>
                 :
                 <>
-                    {children}
-                </>
-            }
+                     {children}
+                 </>
+           }
 
         </>
     )
