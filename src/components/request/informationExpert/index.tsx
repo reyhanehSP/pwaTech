@@ -20,7 +20,7 @@ const InformationExpert: React.FC<PropType> = ({
   nextLevel,
   activeCurState,
 }) => {
-  const { state, dispatch } = useInformation();
+  const { handleChange } = useInformation();
 
   return (
     <Box className={style.content}>
@@ -33,39 +33,25 @@ const InformationExpert: React.FC<PropType> = ({
           <FormLabel className={style.formLabel}>اطلاعات شخصی</FormLabel>
           <TextField
             className={style.inputText}
-            value={state.firstName}
-            onChange={(e) =>
-              dispatch({
-                type: "handleFirstNameChange",
-                payload: e.target.value,
-              })
-            }
+            name="firstName"
+            onChange={handleChange}
             label="نام"
             id="outlined-size-small"
             size="small"
           />
           <TextField
             className={style.inputText}
-            value={state.lastName}
-            onChange={(e) =>
-              dispatch({
-                type: "handleLastNameChange",
-                payload: e.target.value,
-              })
-            }
+            name="lastName"
+            onChange={handleChange}
             label="نام خانوادگی"
             id="outlined-size-small"
             size="small"
           />
           <TextField
+            type="number"
+            name="nationalCode"
             className={style.inputText}
-            value={state.nationalCode}
-            onChange={(e) =>
-              dispatch({
-                type: "handleNationalCodeChange",
-                payload: e.target.value,
-              })
-            }
+            onChange={handleChange}
             label="کدملی"
             id="outlined-size-small"
             size="small"
@@ -75,14 +61,8 @@ const InformationExpert: React.FC<PropType> = ({
         <FormControl>
           <FormLabel className={style.formLabel}>جنسیت</FormLabel>
           <RadioGroup
-            value={state.gender}
-            onChange={(e) =>
-              dispatch({
-                type: "handleGenderChange",
-                payload: e.target.value,
-              })
-            }
-            
+            name="gender"
+            onChange={handleChange}
           >
             <FormControlLabel control={<Radio />} label="خانم" value={0} />
             <FormControlLabel control={<Radio />} label="آقا" value={1} />
@@ -95,22 +75,16 @@ const InformationExpert: React.FC<PropType> = ({
           </FormLabel>
           <Box className="flex">
             <RadioGroup
-              value={state.activity}
-              onChange={(e) =>
-                dispatch({
-                  type: "handleActivityChange",
-                  payload: e.target.value,
-                })
-              }
-            
+              name="jobType"
+              onChange={handleChange}
             >
               <FormControlLabel
-                value={2}
+                value={1}
                 control={<Radio />}
                 label="شخصی کار میکنم"
               />
               <FormControlLabel
-                value={3}
+                value={2}
                 control={<Radio />}
                 label="واحد صنفی، مغازه و ... دارم"
               />
@@ -125,7 +99,6 @@ const InformationExpert: React.FC<PropType> = ({
             onClick={() =>
               nextLevel({
                 type: "locationServices",
-                payload: state,
               })
             }
           >

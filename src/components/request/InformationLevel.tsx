@@ -36,7 +36,7 @@ const InformationLevel = () => {
         throw new Error("invalid state");
     }
   }
-  const [{ skills, status, activeCurState }, dispatch] = useReducer(
+  const [{ status, activeCurState }, dispatch] = useReducer(
     reducer,
     initialState
   );

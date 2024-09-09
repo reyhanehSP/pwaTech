@@ -2,10 +2,15 @@
 import React from "react";
 import style from "./entry.module.scss";
 import { motion } from "framer-motion";
-import { Checkbox, FormControlLabel, InputAdornment, OutlinedInput } from "@mui/material";
+import {
+  Checkbox,
+  FormControlLabel,
+  InputAdornment,
+  OutlinedInput,
+} from "@mui/material";
 import { MuiOtpInput } from "mui-one-time-password-input";
 import AppButtonNew from "@/components/common/AppButtonNew";
-import useEntry from "@/components/tech/entry/_hooks/useEntry";
+import useEntry from "@/components/request/entry/_hooks/useEntry";
 import Link from "next/link";
 import CheckBox from "@/components/common/CheckBox";
 
@@ -541,7 +546,7 @@ const Entry = () => {
                 {currStep === 1 ? (
                   <AppButtonNew
                     onClick={handlePhoneNumber}
-                    disabled={(!enteredPhoneNumber) && (checkRules !== true)}
+                    disabled={!enteredPhoneNumber && checkRules !== true}
                     iconUrl={
                       enteredPhoneNumber
                         ? "/assets/icons/arrowRight/icon.svg"

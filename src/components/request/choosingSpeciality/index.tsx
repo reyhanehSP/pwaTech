@@ -3,20 +3,24 @@ import { Box, Checkbox, FormControlLabel, Typography } from "@mui/material";
 import React from "react";
 import style from "@/components/request/choosingSpeciality/_styles/ChoosingSpeciality.module.scss";
 
+
 import useChoosingSpeciality from "@/components/request/choosingSpeciality/_hooks/useChoosingSpeciality";
 import { PropType } from "@/components/request/choosingSpeciality/_types/type";
 import Loading from "@/components/common/Loading";
 import InputSearch from "@/components/common/InputSearch/InputSearch";
 import CheckBox from "@/components/common/CheckBox/index";
 const ChoosingSpeciality: React.FC<PropType> = ({ nextLevel }) => {
+
   const {
     query,
     specialities,
-    selectedSpecialities,
     isLoading,
     dispatch,
     valueHolder,
+    updateSkills,
   } = useChoosingSpeciality();
+
+
   return (
     <Box className={style.content}>
       <Box className={style.paperTitle}>
@@ -41,15 +45,10 @@ const ChoosingSpeciality: React.FC<PropType> = ({ nextLevel }) => {
             specialities &&
             specialities.map((item: any) => (
               <CheckBox
-              key ={item.ID}
+                key={item.ID}
                 value={item.skillDesc}
                 label={item.skillDesc}
-                onChange={(e: any) =>
-                  dispatch({
-                    type: "updateSkill",
-                    payload: [e.target.checked, item],
-                  })
-                }
+                onChange={(e : any) => updateSkills(e.target.checked, item)}
               />
             ))}
         </Box>
@@ -61,7 +60,6 @@ const ChoosingSpeciality: React.FC<PropType> = ({ nextLevel }) => {
           onClick={() =>
             nextLevel({
               type: "InformationExpert",
-              payload: selectedSpecialities,
             })
           }
         >

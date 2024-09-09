@@ -1,8 +1,9 @@
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { sendSMS, verifySMS } from "@/components/tech/entry/_api/loginApi";
+import { sendSMS, verifySMS } from "@/components/request/entry/_api/loginApi";
 import { toast } from "react-toastify";
-import style from "@/components/tech/entry/entry.module.scss";
+import style from "@/components/request/entry/entry.module.scss";
+import useRegisterStore from "@/components/request/_store/_store";
 
 const useEntry = () => {
   const router = useRouter();
@@ -16,6 +17,8 @@ const useEntry = () => {
   const [statusOtp, setStatusOtp] = useState("");
   const [wrapperY, setWrapperY] = useState(200);
   const [checkRules, setCheckRules] = useState(false);
+
+  const { skills, informations, province } = useRegisterStore();
 
   useEffect(() => {
     //calculate div animate
@@ -44,15 +47,18 @@ const useEntry = () => {
     }
   };
   const handleChangeRule = (value: boolean) => {
-    setCheckRules(value);   
-    if(!value) setEnteredPhoneNumber(false);
+    setCheckRules(value);
+    if (!value) setEnteredPhoneNumber(false);
   };
   const handleChangePhoneNumber = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPhoneNumberIsValid(true);
     let phoneNumber = e.target.value;
     setPhoneNumber(phoneNumber.replace(/[^0-9]/g, ""));
     setEnteredPhoneNumber(false);
-    if ((phoneNumber.length === 10 || phoneNumber.length === 11) && (checkRules === true)) {
+    if (
+      (phoneNumber.length === 10 || phoneNumber.length === 11) &&
+      checkRules === true
+    ) {
       setEnteredPhoneNumber(true);
     }
   };
@@ -76,7 +82,14 @@ const useEntry = () => {
     verifySMS(phoneNumber, otp)
       .then((res) => {
         if (res.statusCode === 0) {
-          router.push("/welcome");
+          const finalObject = {
+            "skills": skills,
+            "informations": informations,
+            "province": province,
+            "tel": phoneNumber,
+          };
+          console.log(finalObject);
+           router.push("/welcome");
         } else {
           toast.error(res.message);
           setStatusOtp("red");

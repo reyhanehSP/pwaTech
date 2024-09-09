@@ -5,8 +5,8 @@ import {
   GetCity,
 } from "@/components/request/locationServices/_api/locationApi";
 import { useRouter } from "next/navigation";
+import useRegisterStore from "@/components/request/_store/_store";
 
-// import {LocationTypes} from "@/components/request/locationServices/_types/type"
 const useLocation = () => {
 
   const route = useRouter()
@@ -15,8 +15,8 @@ const useLocation = () => {
     city: [],
     selectedID : null
   };
-
-
+  
+  const {updateProvince} = useRegisterStore()
   
   function reducer(state: any, action: any) {
     switch (action.type) {
@@ -45,8 +45,10 @@ const useLocation = () => {
   );
 
 
-  const handleChangeProvince = (e: number) => {
+  const handleChangeProvince = (e: any) => {
     dispatch({ type: "updateID", payload: e });
+    updateProvince(e);
+    
     GetCity(e)
       .then((res) => {
         dispatch({ type: "updateCity", payload: res.payload });
@@ -54,7 +56,7 @@ const useLocation = () => {
       .catch((error) => console.log(error));
   };
   const handleSubmit = () => {
-    route.push('/tech/entry')
+    route.push('/request/entry')
   }
  
   return {

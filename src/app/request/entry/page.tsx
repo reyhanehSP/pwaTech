@@ -1,13 +1,13 @@
 import { lazy, Suspense } from "react";
 import SpinnerFullPage from "@/components/common/SpinnerFullPage";
-const Wellcome = lazy(() => import("@/components/welcome"));
+const Entry = lazy(() => import("@/components/request/entry"));
 
-
-const WellcomePage = () => {
+const IntroPage = () => {
   return (
     <Suspense fallback={<SpinnerFullPage />}>
-      <Wellcome />
+      <Entry />
     </Suspense>
   );
 };
-export default WellcomePage;
+
+export default IntroPage;

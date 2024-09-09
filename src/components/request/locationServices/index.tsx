@@ -18,13 +18,9 @@ const LocationServices: React.FC<PropType> = ({
   nextLevel,
   activeCurState
 }) => {
-  const {
-    province,
-    handleChangeProvince,
-    handleSubmit,
-    city,
-    selectedID,
-  } = useLocation();
+  const { province, handleChangeProvince, handleSubmit, selectedID } =
+    useLocation();
+
 
   return (
     <Box className={style.content}>
@@ -35,14 +31,14 @@ const LocationServices: React.FC<PropType> = ({
         <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
           <InputLabel id="demo-select-small-label">استان</InputLabel>
           <Select
-            onChange={(e) => handleChangeProvince(Number(e.target.value))}
+            onChange={(e) => handleChangeProvince(e.target.value)}
             value={selectedID}
             labelId="demo-select-small-label"
             id="demo-select-small"
             label="Age"
           >
             {province.map((item: any) => (
-              <MenuItem key={item.ID} value={item.ID}>
+              <MenuItem key={item.ID} value={item} >
                 {item.ProvinceDesc}
               </MenuItem>
             ))}
@@ -51,16 +47,16 @@ const LocationServices: React.FC<PropType> = ({
         <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
           <InputLabel id="demo-select-small-label">شهر</InputLabel>
           <Select
-            value={selectedID}
+            multiple
             labelId="demo-select-small-label"
             id="demo-select-small"
             label="Age"
           >
-            {city.map((item: any) => (
+            {/* {city.map((item: any) => (
               <MenuItem key={item.ID} value={item.ID}>
                 {item}
               </MenuItem>
-            ))}
+            ))} */}
           </Select>
         </FormControl>
         <Box className={style.footer}>

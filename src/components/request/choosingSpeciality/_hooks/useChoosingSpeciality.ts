@@ -1,5 +1,6 @@
 import { useEffect, useReducer } from "react";
 import { getSkills } from "@/components/request/choosingSpeciality/_api/specialityApi";
+import useRegisterStore from "@/components/request/_store/_store";
 
 const useChoosingSpeciality = () => {
   const initialState = {
@@ -9,6 +10,9 @@ const useChoosingSpeciality = () => {
     isLoading: 0,
     valueHolder :""
   };
+
+  const { updateSkills } = useRegisterStore();
+
   function reducer(state: any, action: any) {
     switch (action.type) {
       case "changeQuery":
@@ -16,30 +20,7 @@ const useChoosingSpeciality = () => {
         return { ...state, query: action.payload , isLoading : 1 };
       case "ready":
         return { ...state, specialities: action.payload };
-      case "updateSkill":
-        if (action.payload[0]) {
-          const exists = state.selectedSpecialities.some(
-            (obj: any) => obj.ID === action.payload[1].ID
-          );
-          if (!exists) {
-            return {
-              ...state,
-              selectedSpecialities: [
-                ...state.selectedSpecialities,
-                action.payload[1],
-              ],
-            };
-          } else {
-            return { ...state };
-          }
-        } else {
-          return {
-            ...state,
-            selectedSpecialities: state.selectedSpecialities.filter(
-              (skill: any) => skill.ID !== action.payload[1].ID
-            ),
-          };
-        }
+     
       case "setLoading":
         return { ...state, isLoading: action.payload };
 
@@ -85,6 +66,7 @@ const useChoosingSpeciality = () => {
     activeCurrStepIndex,
     valueHolder,
     dispatch,
+    updateSkills,
   };
 };
 

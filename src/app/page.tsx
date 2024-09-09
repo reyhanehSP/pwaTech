@@ -1,4 +1,4 @@
-import Intro from "@/components/tech/intro"
+import Intro from "@/components/intro"
 
 const IndexPage = () => {
     return <Intro/>
