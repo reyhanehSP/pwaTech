@@ -1,11 +1,12 @@
-import Image from 'next/image';
+"use client";
+import Image from "next/image";
 
-const myLoader = ({src}) => {
-    return `${src}`;
+const myLoader = ({ src }) => {
+  return `${src}`;
 };
 
 const AppImage = ({
-  alt = "" , 
+  alt = "",
   blurDataURL = "assets/images/blur.webp",
   placeholder = "blur",
   src = "assets/images/blur.webp",
@@ -18,7 +19,7 @@ const AppImage = ({
       blurDataURL={blurDataURL}
       loader={myLoader}
       src={src}
-      alt = {alt}
+      alt={alt}
     />
   );
 };

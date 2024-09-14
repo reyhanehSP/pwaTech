@@ -11,6 +11,7 @@ export const sendSMS = async (phoneNumber:string) => {
           "1669_Username": "uygdWf###$%gfg^548m",
           "1669_Password": "##djfMdf54-_##rrTTdj",
           "Content-Type": "application/json",
+          "referer" : true
         },
       }
     );

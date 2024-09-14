@@ -1,4 +1,4 @@
-"use-client";
+"use client";
 import React from "react";
 import { emphasize, styled } from "@mui/material/styles";
 import Breadcrumbs from "@mui/material/Breadcrumbs";
