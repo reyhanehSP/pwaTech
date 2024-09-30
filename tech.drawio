@@ -4,24 +4,46 @@
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="KMtnxI4F0yMecvli3GG7-17" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="KMtnxI4F0yMecvli3GG7-1" target="KMtnxI4F0yMecvli3GG7-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="KMtnxI4F0yMecvli3GG7-1" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;tech Class&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ first Name: string&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;+last Name : string&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;+gender : boolean&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;+job type : number&lt;br&gt;&amp;nbsp;+expertise :&amp;nbsp;Expertise[]&lt;br&gt;&amp;nbsp;+province: String&lt;br&gt;+city: String&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ addExpertise(expertise: Expertise): void&lt;br&gt;&lt;br&gt;+enterLocation(province: String, city: String): void&lt;br&gt;&lt;br&gt;+validateMobileNumber(): Boolean&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" vertex="1" parent="1">
-          <mxGeometry x="50" y="110" width="160" height="280" as="geometry" />
+          <mxGeometry x="10" y="110" width="290" height="280" as="geometry" />
         </mxCell>
         <mxCell id="KMtnxI4F0yMecvli3GG7-4" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;span style=&quot;background-color: initial; text-align: left;&quot;&gt;Experties&amp;nbsp;&lt;/span&gt;&lt;b&gt;class&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ id: Integer&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+label: String&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" vertex="1" parent="1">
-          <mxGeometry x="280" y="90" width="170" height="80" as="geometry" />
+          <mxGeometry x="360" y="90" width="170" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="KMtnxI4F0yMecvli3GG7-7" value="1" style="endArrow=open;html=1;endSize=12;startArrow=diamondThin;startSize=14;startFill=0;edgeStyle=orthogonalEdgeStyle;align=left;verticalAlign=bottom;rounded=0;" edge="1" parent="1">
+        <mxCell id="KMtnxI4F0yMecvli3GG7-7" value="1" style="endArrow=open;html=1;endSize=12;startArrow=diamondThin;startSize=14;startFill=0;edgeStyle=orthogonalEdgeStyle;align=left;verticalAlign=bottom;rounded=0;entryX=0.465;entryY=-0.037;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="KMtnxI4F0yMecvli3GG7-4">
           <mxGeometry x="-1" y="3" relative="1" as="geometry">
             <mxPoint x="130" y="100" as="sourcePoint" />
-            <mxPoint x="290" y="90" as="targetPoint" />
+            <mxPoint x="290" y="80" as="targetPoint" />
             <Array as="points">
               <mxPoint x="130" y="60" />
-              <mxPoint x="290" y="60" />
+              <mxPoint x="440" y="60" />
+              <mxPoint x="440" y="80" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="KMtnxI4F0yMecvli3GG7-8" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;order Class&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ orderId: Integer&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;+status: String&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;+dateTime: Date&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;+customerName: String&lt;br&gt;&amp;nbsp;+customerLocation: String&lt;br&gt;&amp;nbsp;+customerId: Integer&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ addExpertise(expertise: Expertise): void&lt;br&gt;&lt;br&gt;+enterLocation(province: String, city: String): void&lt;br&gt;&lt;br&gt;+validateMobileNumber(): Boolean&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" vertex="1" parent="1">
-          <mxGeometry x="50" y="420" width="160" height="280" as="geometry" />
+        <mxCell id="KMtnxI4F0yMecvli3GG7-11" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="KMtnxI4F0yMecvli3GG7-8" target="KMtnxI4F0yMecvli3GG7-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KMtnxI4F0yMecvli3GG7-8" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;order Class&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ orderId: Integer&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;+status: String&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;+dateTime: Date&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;+customerName: String&lt;br&gt;&amp;nbsp;+customerLocation: String&lt;br&gt;&amp;nbsp;+customerId: Integer&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ getOrderDetails(): OrderDetails&lt;br&gt;&lt;br&gt;+cancel(): void&lt;br&gt;&lt;br&gt;+performOperation(): void&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="370" y="240" width="220" height="230" as="geometry" />
+        </mxCell>
+        <mxCell id="KMtnxI4F0yMecvli3GG7-9" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;order&amp;nbsp; Detail Class&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ orderId: Integer&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;+status: String&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;+partUnderRepair: String&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;+approximateRepairTime: String&lt;br&gt;&amp;nbsp;+date: Date&lt;br&gt;&amp;nbsp;+customerName: String&lt;br&gt;&amp;nbsp;+&amp;nbsp;mobileNumber: String&lt;br&gt;&amp;nbsp;+address: String&lt;br&gt;&amp;nbsp;+postalCode: String&lt;br&gt;&amp;nbsp;+description: String&lt;br&gt;&amp;nbsp;+location: MapLocation&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ getLocation(): MapLocation&lt;br&gt;&lt;br&gt;+cancel(): void&lt;br&gt;&lt;br&gt;+performOperation(): void&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="650" y="240" width="220" height="350" as="geometry" />
+        </mxCell>
+        <mxCell id="KMtnxI4F0yMecvli3GG7-14" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="KMtnxI4F0yMecvli3GG7-12" target="KMtnxI4F0yMecvli3GG7-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KMtnxI4F0yMecvli3GG7-12" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;order&amp;nbsp; Operation Class&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ orderId: Integer&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;+runningServices: String&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;+customerName: String&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;+date: Date&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ fillForm(orderStatus: String, partUnderRepair: String, approximateTime:String): void&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="400" y="630" width="470" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="KMtnxI4F0yMecvli3GG7-13" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;map location Class&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ latitude: Float&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;+longitude: Float&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;+ getCoordinates(): String&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="920" y="630" width="220" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="KMtnxI4F0yMecvli3GG7-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.427;entryY=-0.02;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="KMtnxI4F0yMecvli3GG7-9" target="KMtnxI4F0yMecvli3GG7-13">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
